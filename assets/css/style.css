@@ -1,3 +1,63 @@
+* {
+    box-sizing: border-box;
+    color: #FEFEFE;
+}
+
 body {
     background: #070720;
+    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+}
+
+/* Navbar */
+
+.navbar {
+    position: relative;
+    border-bottom: 1px solid #50506B;
+    border-top: 1px solid #50506B;
+    padding: 6px 16px;
+}
+
+.brand {
+    position: absolute;
+    left: 32px;
+    top: 50%;
+    transform: translate(0%, -50%);
+    font-size: 28px;
+    font-weight: 900;
+}
+
+.searchbar {
+    width: 650px;
+    height: 54px;
+    margin: 40px auto;
+    background-color: #FEFEFE;
+    border-radius: 27px;
+    overflow: hidden;
+}
+
+.searchbar input, .searchbar .search-icon {
+    display: inline-block;
+}
+
+.searchbar input {
+    width: 596px;
+    height: 100%;
+    padding: 20px 2px;
+    border: none;
+    color: #070720;
+}
+
+.searchbar input:focus {
+    outline: none;
+}
+
+.searchbar .search-icon {
+    width: 54px;
+    height: 54px;
+    vertical-align: bottom;
+}
+
+.searchbar img {
+    width: 30%;
+    margin: 35%;
 }
