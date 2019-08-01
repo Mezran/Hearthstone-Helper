@@ -13,14 +13,15 @@ body {
 .navbar {
     position: relative;
     border-bottom: 1px solid #50506B;
-    margin: 40px 0;
-    padding: 0 32px;
+    border-top: 1px solid #50506B;
+    padding: 6px 16px;
 }
 
 .brand {
     position: absolute;
     left: 32px;
-    top: 12px;
+    top: 50%;
+    transform: translate(0%, -50%);
     font-size: 28px;
     font-weight: 900;
 }
