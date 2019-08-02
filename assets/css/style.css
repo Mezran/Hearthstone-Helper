@@ -8,13 +8,21 @@ body {
     font-family: 'Montserrat', Helvetica, Arial, sans-serif;
 }
 
+/* General */
+
+.box {
+    background-color: #17172E;
+    border: 1px solid #50506B;
+}
+
 /* Navbar */
 
 .navbar {
     position: relative;
     border-bottom: 1px solid #50506B;
-    border-top: 1px solid #50506B;
+    overflow: auto;
     padding: 6px 16px;
+    z-index: 10;
 }
 
 .brand {
@@ -60,4 +68,38 @@ body {
 .searchbar img {
     width: 30%;
     margin: 35%;
+}
+
+/* Sidebar */
+
+.sidebar {
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 80px;
+    padding-top: 148px;
+}
+
+.sidebar ul {
+    text-align: center;
+}
+
+.sidebar ul li {
+    padding-top: 36px;
+}
+
+.sidebarImg {
+    width: 40%;
+    cursor: pointer;
+}
+
+/* main container  */
+
+.main-container {
+    position: relative;
+    left: 80px;
+    width: calc(100% - 80px);
+    padding: 20px;
 }
