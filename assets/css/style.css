@@ -1,35 +1,10 @@
 
-body {
-  font: 16px Arial;  
-* {
-    box-sizing: border-box;
-    color: #FEFEFE;
-}
-
-body {
-    background: #070720;
-    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-}
-
-/* Navbar */
-
-.navbar {
-    position: relative;
-    border-bottom: 1px solid #50506B;
-    border-top: 1px solid #50506B;
-    padding: 6px 16px;
-}
-
-.brand {
-    position: absolute;
-    left: 32px;
-    top: 50%;
-    transform: translate(0%, -50%);
-    font-size: 28px;
-    font-weight: 900;
-}
-
 /*auto-complete searchbar*/
+
+.input-group {
+  font: 16px Arial;  
+  box-sizing: border-box;
+}
 
 .searchbar {
     width: 650px;
