@@ -20,7 +20,11 @@ time, mark, audio, video {
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
+
+	/* Sleeping this part of the reset as it kills the <strong> part of the user search string in autocomplete
+
+	font: inherit;*/
+	
 	vertical-align: baseline;
 }
 /* HTML5 display-role reset for older browsers */

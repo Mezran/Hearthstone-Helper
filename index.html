@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hearthstone Helper</title>
-
+    
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
+
 <body>
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!-- Auto-fill search box from W3 Schools combined with bootstrap dropdown input-->
+    <form autocomplete="off">
+        <div class="input-group mb-3">
+            <div class="input-group-prepend">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Card Name</button>
+                <div class="dropdown-menu">
+                    <div class="dropdown-item" id="cardName">Card Name</div>
+                    <div class="dropdown-item" id="cardType">Card Type</div>
+                    <div class="dropdown-item" id="cardClass">Card Class</div>
+                </div>
+                <div class="autocomplete">
+                    <input class="autocomplete" id="myInput" type="text" name="cardSearch"
+                        placeholder="e.g. Crackling Doom">
+                </div>
+                <input type="submit" value="Search">
+            </div>
+        </div>
+    </form>
+
+
+
+
+
+
+
+    <script src="./assets/javascript/array.js"></script>
     <script src="./assets/javascript/main.js"></script>
+
 </body>
+
 </html>
