@@ -229,3 +229,17 @@ input[type=submit] {
     text-align: center;
     overflow: hidden;
 }
+
+/* Footer  */
+
+.footer {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    z-index: 10;
+    overflow: auto;
+}
+
+.footer footer {
+    margin: 20px 10px
+}

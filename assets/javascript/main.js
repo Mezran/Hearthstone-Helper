@@ -142,7 +142,7 @@ $(".favorite").on("click", function () {
 
     console.log(favoritedCardNames);
   }
-})
+});
 
 document.addEventListener("DOMContentLoaded", function (func) {
   const streamers = [];
