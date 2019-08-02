@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-document.addEventListener("DOMContentLoaded", function(func) {
-
-
-  function hearthstoneQuery(card) {
-    fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
-        headers: {
-          "X-RapidAPI-Key": "de7e1386a0msh4a81fc191231dbbp121289jsn9b9280ac7bc4",
-        } // end headers          // **** DO NOT CHANGE API KEY ****
-      })
-=======
 let arraySelection = cardName;
 const favoritedCardNames = [];
 
@@ -275,41 +264,27 @@ document.addEventListener("DOMContentLoaded", function (func) {
         "X-RapidAPI-Key": "de7e1386a0msh4a81fc191231dbbp121289jsn9b9280ac7bc4",
       } // end headers          // **** DO NOT CHANGE API KEY ****
     })
->>>>>>> 79d71eab494f5b77a0c261b24c7d2220f6eeb917
       .then(response => response.json())
       .then(data => {
         console.log("Success");
         console.log(data);
       })
       .catch(error => console.log(error))
-<<<<<<< HEAD
-  }; // end hearthstoneQuery function
-=======
   };// end hearthstoneQuery function
->>>>>>> 79d71eab494f5b77a0c261b24c7d2220f6eeb917
 
 
   function twitchQuery() {
     // hearthstoneID is the id from twitch.tv documentation.
     const hearthstoneID = "138585";
     fetch("https://api.twitch.tv/helix/streams?game_id=" + hearthstoneID, {
-<<<<<<< HEAD
-        headers: {
-          "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
-        } // end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
-      })
-=======
       headers: {
         "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
       }// end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
     })
->>>>>>> 79d71eab494f5b77a0c261b24c7d2220f6eeb917
       .then(response => response.json())
       .then(data => {
         console.log("twitch Query success");
         console.log(data);
-<<<<<<< HEAD
-=======
         data.data.forEach(function (user, i) {
           const channel = data.data[i].user_name;
           console.log("RESPONSE IS " + channel)
@@ -322,7 +297,6 @@ document.addEventListener("DOMContentLoaded", function (func) {
           channel: streamers[0],
           theme: "dark"
         });
->>>>>>> 79d71eab494f5b77a0c261b24c7d2220f6eeb917
       })
       .catch(error => console.log(error))
   }; // end TwitchQuery function
