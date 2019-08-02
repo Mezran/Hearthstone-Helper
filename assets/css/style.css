@@ -140,5 +140,15 @@ input[type=submit] {
     position: relative;
     left: 80px;
     width: calc(100% - 80px);
-    padding: 20px;
+    padding: 40px 20px;
+}
+
+/* Twitch portal */
+
+#twitch-embed {
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+    text-align: center;
+    overflow: hidden;
 }

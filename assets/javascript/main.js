@@ -128,7 +128,7 @@ function autocomplete(inp, arr) {
 
 
 document.addEventListener("DOMContentLoaded", function(func){
-
+const streamers = [];
 
   function hearthstoneQuery(card){
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
@@ -157,6 +157,18 @@ document.addEventListener("DOMContentLoaded", function(func){
     .then(data => {
       console.log("twitch Query success");
       console.log(data);
+      data.data.forEach(function (user, i) {
+        const channel = data.data[i].user_name;
+        console.log("RESPONSE IS " + channel)
+        streamers.push(channel);
+      });
+      console.log("LOADING " + streamers);
+      new Twitch.Embed("twitch-embed", {
+        width: `100%`,
+        height: `560`,
+        channel: streamers[0],
+        theme: "dark"
+      });
     })
     .catch(error => console.log(error))
   }; // end TwitchQuery function
