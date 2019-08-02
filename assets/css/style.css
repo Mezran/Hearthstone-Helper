@@ -4,7 +4,11 @@
 }
 
 body {
-    background-color: #17172E;
+    background-color: #070720;
+}
+
+hr {
+    border-color: rgba(255, 255, 255, 0.2)
 }
 
 /* General */
@@ -153,6 +157,67 @@ input[type=submit] {
     left: 80px;
     width: calc(100% - 80px);
     padding: 40px 20px;
+}
+
+/* Cards styling */
+
+.myCard {
+    width: 80%;
+    max-width: 720px;
+    min-height: 20px;
+    background-color: #17172E;
+    overflow: auto;
+    position: relative;
+    margin: 20px auto;
+    border-radius: 6px;
+}
+
+.myCard .card-content, .myCard .card-image {
+    float: left;
+}
+
+.myCard .card-image {
+    width: 30%;
+    height: auto;
+    padding: 0 20px 20px;
+    vertical-align: baseline;
+    display: inline-block;
+}
+
+.myCard .card-content {
+    width: 70%;
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 20px;
+}
+
+.favorite {
+    vertical-align: middle;
+    padding-right: 8px;
+}
+
+.title-container {
+    color: #D8D8D8;
+    margin-top: 16px;
+    letter-spacing: 1px;
+}
+
+.title-container * {
+    vertical-align: middle;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.my-card-body {
+    color: #A1A1A1;
+    padding: 0 0 20px;
+}
+
+.card-stat {
+    margin-right: 24px;
 }
 
 /* Twitch portal */

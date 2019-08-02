@@ -20,6 +20,7 @@
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://kit.fontawesome.com/712551befc.js"></script>
 </head>
 
 <body>
@@ -44,22 +45,14 @@
                 </div>
 
 
-               <!--- <h1 class="brand">Hearthstone Helper</h1>
+                <!--- <h1 class="brand">Hearthstone Helper</h1>
                 <div class="searchbar">
                     <div class="search-icon"><img src="./assets/images/search.svg" alt="search-icon"></div><input
                         type="text" placeholder="Search for a twitch streamer or card here..." id="userSearch">
                 </div> -->
         </form>
-
     </nav>
 
-
-
-
-
-
-
-    <script src="./assets/javascript/array.js"></script>
     <div class="sidebar box">
         <ul>
             <li><img src="./assets/images/hamburger.svg" alt="open menu" class="sidebarImg"></li>
@@ -69,12 +62,34 @@
 
     <div class="main-container">
         <div id="twitch-embed"></div>
+
+        <div id="search-results">
+            <div class="myCard box">
+                <img src="https://wow.zamimg.com/images/hearthstone/cards/enus/original/Mekka4t.png" alt="card"
+                    class="card-image">
+                <div class="card-content">
+                    <div class="title-container">
+                        <i class="fas fa-star fa-lg favorite"></i>
+                        <span class="card-title">Card name here</span>
+                    </div>
+                    <hr>
+                    <div class="my-card-body">
+                        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quisquam ipsam nisi dolores ut at
+                            ab est quidem aliquid distinctio molestiae error, omnis expedita eaque numquam totam non
+                            accusantium pariatur nulla eum.</p>
+                        <div><span class="card-stat">Stat 1: 20</span><span class="card-stat">Stat 1: 20</span><span
+                                class="card-stat">Stat 1: 20</span><span class="card-stat">Stat 1: 20</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 
     <script src="https://embed.twitch.tv/embed/v1.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./assets/javascript/array.js"></script>
     <script src="./assets/javascript/main.js"></script>
-
 </body>
 
 </html>
