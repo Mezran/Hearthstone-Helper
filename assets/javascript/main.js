@@ -60,13 +60,6 @@ function autocomplete(inp, arr) {
       }
     }
   });
-
-
-
-
-
-
-
   
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function (e) {
@@ -124,8 +117,6 @@ function autocomplete(inp, arr) {
     closeAllLists(e.target);
   });
 }
-
-
 
 document.addEventListener("DOMContentLoaded", function(func){
 const streamers = [];
