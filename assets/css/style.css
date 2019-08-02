@@ -1,18 +1,21 @@
+/* General styling  */
 * {
     box-sizing: border-box;
-    color: #FEFEFE;
 }
 
 body {
-    background: #070720;
-    font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+    background-color: #070720;
+}
+
+hr {
+    border-color: rgba(255, 255, 255, 0.2)
 }
 
 /* General */
 
 .box {
-    background-color: #17172E;
-    border: 1px solid #50506B;
+  background-color: #17172E;
+  border: 1px solid #50506B;
 }
 
 /* Navbar */
@@ -20,8 +23,8 @@ body {
 .navbar {
     position: relative;
     border-bottom: 1px solid #50506B;
-    overflow: auto;
-    padding: 6px 16px;
+    overflow: show;
+    padding: 32px 13px;
     z-index: 10;
 }
 
@@ -33,7 +36,12 @@ body {
     font-size: 28px;
     font-weight: 900;
 }
+/*auto-complete searchbar*/
 
+.input-group {
+    font: 16px Arial;  
+    box-sizing: border-box;
+}
 .searchbar {
     width: 650px;
     height: 54px;
@@ -70,7 +78,50 @@ body {
     margin: 35%;
 }
 
-/* Sidebar */
+.autocomplete {
+    position: relative;
+    display: inline-block;
+    width: 300px;
+}
+input {
+    border: 1px solid transparent;
+    background-color: #f1f1f1;
+    padding: 10px;
+    font-size: 16px;
+}
+input[type=text] {
+    background-color: #f1f1f1;
+    width: 100%;
+}
+input[type=submit] {
+    background-color: gray;
+    color: #fff;
+}
+.autocomplete-items {
+    position: absolute;
+    border: 1px solid #d4d4d4;
+    border-bottom: none;
+    border-top: none;
+    z-index: 99;
+    top: 100%;
+    left: 0;
+    right: 0;
+}
+.autocomplete-items div {
+    padding: 10px;
+    cursor: pointer;
+    background-color: #fff; 
+    border-bottom: 1px solid #d4d4d4; 
+}
+.autocomplete-items div:hover {
+    background-color: #e9e9e9; 
+}
+.autocomplete-active {
+    background-color: darkgray !important; 
+    color: #ffffff; 
+}
+
+  /* Sidebar */
 
 .sidebar {
     z-index: 5;
@@ -79,7 +130,7 @@ body {
     left: 0;
     height: 100vh;
     width: 80px;
-    padding-top: 148px;
+    padding-top: 106px;
 }
 
 .sidebar ul {
@@ -95,11 +146,93 @@ body {
     cursor: pointer;
 }
 
+.sidebar-content {
+    z-index: 4;
+    width: 250px;
+    left: -250px;
+    transition: left ease-in-out 0.3s;
+}
+
+.sidebar-content.open {
+    left: 80px;
+}
+
 /* main container  */
 
 .main-container {
     position: relative;
     left: 80px;
     width: calc(100% - 80px);
-    padding: 20px;
+    padding: 40px 20px;
+}
+
+/* Cards styling */
+
+.myCard {
+    width: 80%;
+    max-width: 720px;
+    min-height: 20px;
+    background-color: #17172E;
+    overflow: auto;
+    position: relative;
+    margin: 20px auto;
+    border-radius: 6px;
+}
+
+.myCard .card-content, .myCard .card-image {
+    float: left;
+}
+
+.myCard .card-image {
+    width: 30%;
+    height: auto;
+    padding: 0 20px 20px;
+    vertical-align: baseline;
+    display: inline-block;
+}
+
+.myCard .card-content {
+    width: 70%;
+    height: auto;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    padding-right: 20px;
+}
+
+.favorite {
+    vertical-align: middle;
+    padding-right: 8px;
+}
+
+.title-container {
+    color: #D8D8D8;
+    margin-top: 16px;
+    letter-spacing: 1px;
+}
+
+.title-container * {
+    vertical-align: middle;
+    font-size: 2em;
+    font-weight: bold;
+}
+
+.my-card-body {
+    color: #A1A1A1;
+    padding: 0 0 20px;
+}
+
+.card-stat {
+    margin-right: 24px;
+}
+
+/* Twitch portal */
+
+#twitch-embed {
+    width: 100%;
+    padding-left: 2%;
+    padding-right: 2%;
+    text-align: center;
+    overflow: hidden;
 }
