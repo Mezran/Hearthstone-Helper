@@ -150,6 +150,17 @@ input[type=submit] {
     cursor: pointer;
 }
 
+.sidebar-content {
+    z-index: 4;
+    width: 250px;
+    left: -250px;
+    transition: left ease-in-out 0.3s;
+}
+
+.sidebar-content.open {
+    left: 80px;
+}
+
 /* main container  */
 
 .main-container {
@@ -197,6 +208,11 @@ input[type=submit] {
 .favorite {
     vertical-align: middle;
     padding-right: 8px;
+}
+
+
+.favorited {
+    color: yellow;
 }
 
 .title-container {

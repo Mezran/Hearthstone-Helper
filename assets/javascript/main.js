@@ -1,5 +1,6 @@
-
 let arraySelection = cardName;
+const favoritedCardNames = [];
+
 
 autocomplete(document.getElementById("myInput"), (arraySelection));
 
@@ -13,6 +14,7 @@ $(".dropdown-item").click(function () {
       ? cardType
       : cardClass
   console.log(arraySelection);
+
   
   if (arraySelection === cardName) {
     autocomplete(document.getElementById("myInput"), (arraySelection));
@@ -124,6 +126,7 @@ function autocomplete(inp, arr) {
   });
 }
 
+
 function showSearchArray(inp, arr) {
   /*the autocomplete function takes two arguments,
   the text field element and an array of possible autocompleted values:*/
@@ -229,6 +232,36 @@ inp.addEventListener("keydown", function (e) {
 document.addEventListener("DOMContentLoaded", function (func) {
   const streamers = [];
 
+
+$(".favorite").on("click", function () {
+  const card = $(this);
+  const cardName = card.attr("data-card-name");
+  console.log(cardName);
+  if (card.attr("data-state") === "unfavorited") {
+    console.log("Favorited");
+    card.attr("data-state", "favorited");
+    card.addClass("favorited");
+    favoritedCardNames.push(cardName);
+  } else {
+    console.log("unfavorited");
+    card.attr("data-state", "unfavorited");
+    card.removeClass("favorited");
+
+    // Remove the card from the favorites array
+    for (var i = favoritedCardNames.length - 1; i >= 0; i--) {
+      if (favoritedCardNames[i] === cardName) {
+        favoritedCardNames.splice(i, 1);
+      }
+    }
+
+    console.log(favoritedCardNames);
+  }
+})
+
+document.addEventListener("DOMContentLoaded", function (func) {
+  const streamers = [];
+
+
   function hearthstoneQuery(card) {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
       headers: {
@@ -271,6 +304,13 @@ document.addEventListener("DOMContentLoaded", function (func) {
       })
       .catch(error => console.log(error))
   }; // end TwitchQuery function
+  
+//Begin sidebar functionality
+$("#hamburger").on("click", function openSidebar(){
+    $(".sidebar-content").toggleClass("open");
+});
+
+  
 
   hearthstoneQuery("Chicken");
   twitchQuery()
