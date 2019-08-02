@@ -25,26 +25,33 @@
 <body>
 
     <!-- Auto-fill search box from W3 Schools combined with bootstrap dropdown input-->
-    <form autocomplete="off">
-        <div class="input-group mb-3">
-            <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenu2"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Card Name</button>
-                <div class="dropdown-menu">
-                    <button class="dropdown-item" type="button" id="cardName" value="cardName">Card Name</button>
-                    <button class="dropdown-item" type="button" id="cardType" value="cardType">Card Type</button>
-                    <button class="dropdown-item" type="button" id="cardClass" value="cardClass">Card Class</button>
+    <nav class="navbar box">
+        <form autocomplete="off">
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Card Name</button>
+                    <div class="dropdown-menu">
+                        <button class="dropdown-item" type="button" id="cardName" value="cardName">Card Name</button>
+                        <button class="dropdown-item" type="button" id="cardType" value="cardType">Card Type</button>
+                        <button class="dropdown-item" type="button" id="cardClass" value="cardClass">Card Class</button>
+                    </div>
+                    <div class="autocomplete">
+                        <input class="autocomplete" id="myInput" type="text" name="cardSearch"
+                            placeholder="e.g. Crackling Doom">
+                    </div>
+                    <input type="submit" value="Search">
                 </div>
-                <div class="autocomplete">
-                    <input class="autocomplete" id="myInput" type="text" name="cardSearch"
-                        placeholder="e.g. Crackling Doom">
-                </div>
-                <input type="submit" value="Search">
-            </div>
-        </div>
-    </form>
 
 
+               <!--- <h1 class="brand">Hearthstone Helper</h1>
+                <div class="searchbar">
+                    <div class="search-icon"><img src="./assets/images/search.svg" alt="search-icon"></div><input
+                        type="text" placeholder="Search for a twitch streamer or card here..." id="userSearch">
+                </div> -->
+        </form>
+
+    </nav>
 
 
 
@@ -53,10 +60,20 @@
 
 
     <script src="./assets/javascript/array.js"></script>
+    <div class="sidebar box">
+        <ul>
+            <li><img src="./assets/images/hamburger.svg" alt="open menu" class="sidebarImg"></li>
+            <li><img src="./assets/images/star.svg" alt="open menu" class="sidebarImg"></li>
+        </ul>
+    </div>
+
+    <div class="main-container">
+        <img src="https://via.placeholder.com/400" alt="temporary alternate image">
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="./assets/javascript/main.js"></script>
 
 </body>
 
 </html>
-
-<!-- <img src="./assets/images/search.png" alt="search-icon"> -->
