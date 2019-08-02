@@ -102,12 +102,16 @@ input[type=submit] {
     top: 100%;
     left: 0;
     right: 0;
+    max-height: 1200%;
+    overflow-x: auto;
+    
 }
 .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
     background-color: #fff; 
     border-bottom: 1px solid #d4d4d4; 
+
 }
 .autocomplete-items div:hover {
     background-color: #e9e9e9; 
