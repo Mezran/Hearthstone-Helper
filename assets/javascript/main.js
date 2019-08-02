@@ -1,9 +1,11 @@
 let arraySelection = cardName;
+const favoritedCardNames = [];
+
 
 autocomplete(document.getElementById("myInput"), (arraySelection));
 
 
-$(".dropdown-item").click(function() {
+$(".dropdown-item").click(function () {
   let text = $(this).text(); // get text of the clicked item
   $("#dropdownMenu2").text(text); // set text to the button (dropdown)
   arraySelection = $(this).val() === 'cardName'
@@ -13,7 +15,7 @@ $(".dropdown-item").click(function() {
       : cardClass
   console.log(arraySelection);
   autocomplete(document.getElementById("myInput"), (arraySelection));
-    });
+});
 
 
 function autocomplete(inp, arr) {
@@ -59,7 +61,7 @@ function autocomplete(inp, arr) {
       }
     }
   });
-  
+
   /*execute a function presses a key on the keyboard:*/
   inp.addEventListener("keydown", function (e) {
     var x = document.getElementById(this.id + "autocomplete-list");
@@ -117,25 +119,50 @@ function autocomplete(inp, arr) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", function(func){
-const streamers = [];
+$(".favorite").on("click", function () {
+  const card = $(this);
+  const cardName = card.attr("data-card-name");
+  console.log(cardName);
+  if (card.attr("data-state") === "unfavorited") {
+    console.log("Favorited");
+    card.attr("data-state", "favorited");
+    card.addClass("favorited");
+    favoritedCardNames.push(cardName);
+  } else {
+    console.log("unfavorited");
+    card.attr("data-state", "unfavorited");
+    card.removeClass("favorited");
 
-  function hearthstoneQuery(card){
+    // Remove the card from the favorites array
+    for (var i = favoritedCardNames.length - 1; i >= 0; i--) {
+      if (favoritedCardNames[i] === cardName) {
+        favoritedCardNames.splice(i, 1);
+      }
+    }
+
+    console.log(favoritedCardNames);
+  }
+})
+
+document.addEventListener("DOMContentLoaded", function (func) {
+  const streamers = [];
+
+  function hearthstoneQuery(card) {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
       headers: {
         "X-RapidAPI-Key": "de7e1386a0msh4a81fc191231dbbp121289jsn9b9280ac7bc4",
       } // end headers          // **** DO NOT CHANGE API KEY ****
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log("Success");
-      console.log(data);
-    })
-    .catch(error => console.log(error))
+      .then(response => response.json())
+      .then(data => {
+        console.log("Success");
+        console.log(data);
+      })
+      .catch(error => console.log(error))
   };// end hearthstoneQuery function
 
 
-  function twitchQuery(){
+  function twitchQuery() {
     // hearthstoneID is the id from twitch.tv documentation.
     const hearthstoneID = "138585";
     fetch("https://api.twitch.tv/helix/streams?game_id=" + hearthstoneID, {
@@ -143,24 +170,26 @@ const streamers = [];
         "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
       }// end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
     })
-    .then(response => response.json())
-    .then(data => {
-      console.log("twitch Query success");
-      console.log(data);
-      data.data.forEach(function (user, i) {
-        const channel = data.data[i].user_name;
-        console.log("RESPONSE IS " + channel)
-        streamers.push(channel);
-      });
-      console.log("LOADING " + streamers);
-      new Twitch.Embed("twitch-embed", {
-        width: `100%`,
-        height: `560`,
-        channel: streamers[0],
-        theme: "dark"
-      });
-    })
-    .catch(error => console.log(error))
+
+      .then(response => response.json())
+      .then(data => {
+        console.log("twitch Query success");
+        console.log(data);
+        data.data.forEach(function (user, i) {
+          const channel = data.data[i].user_name;
+          console.log("RESPONSE IS " + channel)
+          streamers.push(channel);
+        });
+        console.log("LOADING " + streamers);
+        new Twitch.Embed("twitch-embed", {
+          width: `100%`,
+          height: `560`,
+          channel: streamers[0],
+          theme: "dark"
+        });
+      })
+      .catch(error => console.log(error))
+
   }; // end TwitchQuery function
   
 //Begin sidebar functionality

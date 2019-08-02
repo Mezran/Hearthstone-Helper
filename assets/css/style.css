@@ -206,6 +206,11 @@ input[type=submit] {
     padding-right: 8px;
 }
 
+
+.favorited {
+    color: yellow;
+}
+
 .title-container {
     color: #D8D8D8;
     margin-top: 16px;
