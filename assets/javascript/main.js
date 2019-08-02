@@ -1,6 +1,6 @@
-
 let arraySelection = cardName;
 const favoritedCardNames = [];
+
 
 autocomplete(document.getElementById("myInput"), (arraySelection));
 
@@ -170,6 +170,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
         "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
       }// end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
     })
+
       .then(response => response.json())
       .then(data => {
         console.log("twitch Query success");
@@ -188,7 +189,15 @@ document.addEventListener("DOMContentLoaded", function (func) {
         });
       })
       .catch(error => console.log(error))
+
   }; // end TwitchQuery function
+  
+//Begin sidebar functionality
+$("#hamburger").on("click", function openSidebar(){
+    $(".sidebar-content").toggleClass("open");
+});
+
+  
 
   hearthstoneQuery("Chicken");
   twitchQuery()
