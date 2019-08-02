@@ -1,25 +1,26 @@
 
 const cardType = [
 "Hero",
+"Hero Power",
 "Minion",
 "Spell",
-"Weapon",
-"Hero Power"];
+"Weapon"
+];
     
 const cardClass = [
-"Priest",
-"Neutral",
-"Warrior",
-"Warlock",
-"Mage",
+"Death Knight",
+"Dream",
 "Druid",
 "Hunter",
-"Shaman",
+"Mage",
+"Neutral",
 "Paladin",
+"Priest",
 "Rogue",
-"Dream",
-"Whizbang",
-"Death Knight"
+"Shaman",
+"Warlock",
+"Warrior",
+"Whizbang"
     ];
 
 const cardName = ["Anduin Wrynn",
