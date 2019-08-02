@@ -13,7 +13,6 @@ $(".dropdown-item").click(function () {
     : $(this).val() === 'cardType'
       ? cardType
       : cardClass
-  console.log(arraySelection);
 
   
   if (arraySelection === cardName) {
@@ -228,9 +227,6 @@ inp.addEventListener("keydown", function (e) {
 
 }
 
-
-document.addEventListener("DOMContentLoaded", function (func) {
-  const streamers = [];
 
 
 $(".favorite").on("click", function () {
