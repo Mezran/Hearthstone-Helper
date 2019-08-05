@@ -41,15 +41,11 @@
                         <input class="autocomplete" id="myInput" type="text" name="cardSearch"
                             placeholder="e.g. Crackling Doom">
                     </div>
-                    <input type="submit" value="Search">
+                    <input type="button" value="Search">
                 </div>
 
 
-                <!--- <h1 class="brand">Hearthstone Helper</h1>
-                <div class="searchbar">
-                    <div class="search-icon"><img src="./assets/images/search.svg" alt="search-icon"></div><input
-                        type="text" placeholder="Search for a twitch streamer or card here..." id="userSearch">
-                </div> -->
+              
         </form>
     </nav>
 
@@ -61,7 +57,7 @@
     </div>
 
     <div class="sidebar sidebar-content box">
-        Stuff goes here.
+        Favorite cards go here.
     </div>
 
     <div class="main-container">
@@ -73,7 +69,9 @@
                     class="card-image">
                 <div class="card-content">
                     <div class="title-container">
-                        <i class="fas fa-star fa-lg favorite"></i>
+
+                        <i class="fas fa-star fa-lg favorite" data-card-name="example card" data-state="unfavorited"></i>
+
                         <span class="card-title">Card name here</span>
                     </div>
                     <hr>
