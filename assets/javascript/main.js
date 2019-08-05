@@ -405,6 +405,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
 
 
   hearthstoneQuery("Chicken");
+  hearthstoneQuery("Arcane Shot");
   twitchQuery()
 
 }); // end DOM content loaded;
