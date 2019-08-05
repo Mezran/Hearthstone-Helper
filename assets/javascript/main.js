@@ -458,18 +458,21 @@ document.addEventListener("DOMContentLoaded", function(func) {
 
   //Begin sidebar functionality
   $("#hamburger").on("click", function openSidebar() {
-    $("#glossarySidebar").toggleClass("open")
+    if ($("#favSidebar").hasClass("open")) {
+      $("#favSidebar").toggleClass("open");
+      $("#glossarySidebar").toggleClass("open")
+    } else {
+      $("#glossarySidebar").toggleClass("open")
+    }
   });
+  
   $("#favStar").on("click", function openSidebar() {
-    $("#favSidebar").toggleClass("open");
-
-    // //Begin sidebar functionality
-    // $("#hamburger").on("click", function openSidebar() {
-    //   $("#glossarySidebar").toggleClass("open")
-    // });
-    // $("#favStar").on("click", function openSidebar() {
-    //   $("#favSidebar").toggleClass("open");
-
+    if ($("#glossarySidebar").hasClass("open")) {
+      $("#glossarySidebar").toggleClass("open");
+      $("#favSidebar").toggleClass("open")
+    } else {
+      $("#favSidebar").toggleClass("open")
+    }
   });
 
 
