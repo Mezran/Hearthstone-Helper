@@ -39,7 +39,7 @@ hr {
 /*auto-complete searchbar*/
 
 .input-group {
-    font: 16px Arial;  
+    font: 16px Arial;
     box-sizing: border-box;
 }
 .searchbar {
@@ -108,21 +108,21 @@ input[type=submit] {
     right: 0;
     max-height: 1200%;
     overflow-x: auto;
-    
+
 }
 .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #d4d4d4; 
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
 
 }
 .autocomplete-items div:hover {
-    background-color: #e9e9e9; 
+    background-color: #e9e9e9;
 }
 .autocomplete-active {
-    background-color: darkgray !important; 
-    color: #ffffff; 
+    background-color: darkgray !important;
+    color: #ffffff;
 }
 
   /* Sidebar */
@@ -225,6 +225,11 @@ input[type=submit] {
     vertical-align: middle;
     font-size: 2em;
     font-weight: bold;
+}
+
+.flavor-text{
+  font-size: 0.5em;
+  font-weight: lighter;
 }
 
 .my-card-body {
