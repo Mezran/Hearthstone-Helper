@@ -237,7 +237,6 @@ function showSearchArray(inp, arr) {
 
 
 function createCard(passedCard) {
-  console.log("Sending");
   const cardName = passedCard[0].name;
   //create all elements
   // main wrapper for the card
@@ -265,7 +264,6 @@ function createCard(passedCard) {
   cardFav.setAttribute('data-card-name', cardName);
   cardTitleContainer.appendChild(cardFav);
   // If the card is already in the favorites list,
-  console.log(favsList.includes(cardName));
   if (favsList.includes(cardName)) {
     cardFav.setAttribute('data-state', 'favorited');
     cardFav.setAttribute('class', 'fas fa-star fa-lg favorite favorited');
@@ -348,12 +346,20 @@ function createCard(passedCard) {
 } // end function createCard
 
 
+// create favorites bar inital list on load
+for (let i = 0; i < favsList.length; i++) {
+  favDiv = document.createElement("div");
+  favDiv.className ="favDivs";
+  favDiv.innerHTML = favsList[i];
+  $("#favSidebar").prepend(favDiv);
+};
+
+
 $("#search-results").on("click", ".favorite", function () {
   const card = $(this);
   const cardName = card.attr("data-card-name");
   console.log(cardName + " " + favsList);
   if (favsList.indexOf(cardName) > -1) {
-    console.log("already favorited! - unfavoriting");
     // RUN UNFAVORITE CODE
     unFavorite(card, cardName);
   } else {
@@ -362,9 +368,19 @@ $("#search-results").on("click", ".favorite", function () {
       card.addClass("favorited");
       favsList.push(cardName);
       localStorage.setItem("favsList", JSON.stringify(favsList));
+      // create favorites list dynamically as favorites are added
+      $("#favSidebar").empty();
+      favsList = JSON.parse(localStorage.getItem("favsList"));
+      for (let i = 0; i < favsList.length; i++) {
+        let favDiv = document.createElement("div");
+        favDiv.addClass("favDivs");
+        favDiv.className ="favDivs";
+        favDiv.innerHTML = favsList[i];
+        $("#favSidebar").prepend(favDiv);
+      };
+
     } else {
       unFavorite(card, cardName);
-      console.log(favoritedCardNames);
     }
   }
 
@@ -372,7 +388,6 @@ $("#search-results").on("click", ".favorite", function () {
 });
 
 function unFavorite(x, y) {
-  console.log("unfavorited");
   x.attr("data-state", "unfavorited");
   x.removeClass("favorited");
 
@@ -383,6 +398,17 @@ function unFavorite(x, y) {
     }
   }
   localStorage.setItem("favsList", JSON.stringify(favsList) || []);
+$("#favSidebar").empty();
+      favsList = JSON.parse(localStorage.getItem("favsList"));
+      for (let i = 0; i < favsList.length; i++) {
+        let favDiv = document.createElement("div");
+        favDiv.className ="favDivs";
+        favDiv.innerHTML = favsList[i];
+        $("#favSidebar").prepend(favDiv);
+      };
+
+
+
 };
 
 document.addEventListener("DOMContentLoaded", function (func) {
@@ -397,8 +423,6 @@ document.addEventListener("DOMContentLoaded", function (func) {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("Success");
-        console.log(data);
         createCard(data);
       })
       .catch(error => console.log(error))
@@ -415,14 +439,10 @@ document.addEventListener("DOMContentLoaded", function (func) {
     })
       .then(response => response.json())
       .then(data => {
-        console.log("twitch Query success");
-        console.log(data);
         data.data.forEach(function (user, i) {
           const channel = data.data[i].user_name;
-          console.log("RESPONSE IS " + channel)
           streamers.push(channel);
         });
-        console.log("LOADING " + streamers);
         new Twitch.Embed("twitch-embed", {
           width: `100%`,
           height: `560`,
@@ -439,11 +459,18 @@ $("#hamburger").on("click", function openSidebar(){
 $("#favStar").on("click", function openSidebar(){
   $("#favSidebar").toggleClass("open");
 
-});
+  //Begin sidebar functionality
+  $("#hamburger").on("click", function openSidebar() {
+    $("#glossarySidebar").toggleClass("open")
+  });
+  $("#favStar").on("click", function openSidebar() {
+    $("#favSidebar").toggleClass("open");
+
+  });
 
 
   // on search button pressed
-  document.querySelector("#searchButton").addEventListener("click", function(e){
+  document.querySelector("#searchButton").addEventListener("click", function (e) {
     let cardToSearch = document.querySelector("#myInput").value;
     hearthstoneQuery(cardToSearch);
   })
