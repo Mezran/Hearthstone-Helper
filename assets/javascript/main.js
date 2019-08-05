@@ -401,37 +401,24 @@ function buildFavs() {
   $("#favSidebarContainer").empty();
   favsList = JSON.parse(localStorage.getItem("favsList"));
   for (let i = 0; i < favsList.length; i++) {
-    const favDiv = $("<div>");
-    const favText = $("<div>");
+    const favDiv = $("<div class='mt-3'>");
+    const favText = $("<div class='favText'>");
     const unfavText = $("<p>");
 
     favText.addClass("favDivsClick");
     favText.attr("data-name", favsList[i]);
-
+    favText.css("cursor", "pointer");
     favText.text(`${favsList[i]}`);
 
     unfavText.text("Unfavorite");
-    unfavText.addClass("unfavorite-btn text-muted");
+    unfavText.addClass("unfavorite-btn quick-links");
     unfavText.attr("data-name", favsList[i]);
+    unfavText.css("cursor", "pointer");
 
     favDiv.append(favText, unfavText);
     $("#favSidebarContainer").prepend(favDiv);
-
-    // let favDiv = document.createElement("button");
-    // favDiv.className = "favDivsClick";
-    // favDiv.innerHTML = favsList[i];
-    // favDiv.value = favsList[i];
-    // favDiv.setAttribute("data-name", favsList[i]);
-    // $("#favSidebarContainer").prepend(favDiv);
-
-    // let unfavoriteBtn =$("<p>");
-    // unfavoriteBtn.text("Unfavorite");
-    // unfavoriteBtn.addClass("btn");
-    // $("favDiv").prepend(unfavoriteBtn);
-
-    // let hr = document.createElement("hr");
-    // favDiv.append(hr);
   }
+
   if (favsList.length == 0) {
     console.log("Empty Favs!");
     $("#favSidebarContainer").append("<p class='text-muted text-center m-3' style='font-size: 14px;'>No favorites yet. <br> Add favorites from your searches to save them here.</p>");
