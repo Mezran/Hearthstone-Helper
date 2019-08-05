@@ -4,14 +4,14 @@ var favsList = JSON.parse(localStorage.getItem("favsList")) || [];
 
 autocomplete(document.getElementById("myInput"), (arraySelection));
 
-$(".dropdown-item").click(function () {
+$(".dropdown-item").click(function() {
   let text = $(this).text(); // get text of the clicked item
   $("#dropdownMenu2").text(text); // set text to the button (dropdown)
   arraySelection = $(this).val() === 'cardName' ?
     cardName :
     $(this).val() === 'cardType' ?
-      cardType :
-      cardClass
+    cardType :
+    cardClass
 
 
   if (arraySelection === cardName) {
@@ -27,7 +27,7 @@ function autocomplete(inp, arr) {
   the text field element and an array of possible autocompleted values:*/
   let currentFocus;
   /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function (e) {
+  inp.addEventListener("input", function(e) {
     let firstNewDiv;
     let secondNewDiv;
     let i, val = this.value;
@@ -56,7 +56,7 @@ function autocomplete(inp, arr) {
         /*insert a input field that will hold the current array item's value:*/
         secondNewDiv.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
         /*execute a function when someone clicks on the item value (DIV element):*/
-        secondNewDiv.addEventListener("click", function (e) {
+        secondNewDiv.addEventListener("click", function(e) {
           /*insert the value for the autocomplete text field:*/
           inp.value = this.getElementsByTagName("input")[0].value;
           /*close the list of autocompleted values,
@@ -74,7 +74,7 @@ function autocomplete(inp, arr) {
 
 
   /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function (e) {
+  inp.addEventListener("keydown", function(e) {
     var x = document.getElementById(this.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode == 40) {
@@ -128,10 +128,10 @@ function autocomplete(inp, arr) {
     }
   }
   /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {
+  document.addEventListener("click", function(e) {
     closeAllLists(e.target);
   });
-}// end auto complete
+} // end auto complete
 
 
 function showSearchArray(inp, arr) {
@@ -139,7 +139,7 @@ function showSearchArray(inp, arr) {
   the text field element and an array of possible autocompleted values:*/
   let currentFocus;
   /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function (e) {
+  inp.addEventListener("input", function(e) {
     let firstNewDiv;
     let secondNewDiv;
     let i, val = this.value;
@@ -165,7 +165,7 @@ function showSearchArray(inp, arr) {
       /*insert a input field that will hold the current array item's value:*/
       secondNewDiv.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
       /*execute a function when someone clicks on the item value (DIV element):*/
-      secondNewDiv.addEventListener("click", function (e) {
+      secondNewDiv.addEventListener("click", function(e) {
         /*insert the value for the autocomplete text field:*/
         inp.value = this.getElementsByTagName("input")[0].value;
         /*close the list of autocompleted values,
@@ -176,7 +176,7 @@ function showSearchArray(inp, arr) {
     }
   })
   /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function (e) {
+  inp.addEventListener("keydown", function(e) {
     var x = document.getElementById(this.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode == 40) {
@@ -200,6 +200,7 @@ function showSearchArray(inp, arr) {
       }
     }
   });
+
   function addActive(x) {
     /*a function to classify an item as "active":*/
     if (!x) return false;
@@ -210,12 +211,14 @@ function showSearchArray(inp, arr) {
     /*add class "autocomplete-active":*/
     x[currentFocus].classList.add("autocomplete-active");
   }
+
   function removeActive(x) {
     /*a function to remove the "active" class from all autocomplete items:*/
     for (var i = 0; i < x.length; i++) {
       x[i].classList.remove("autocomplete-active");
     }
   }
+
   function closeAllLists(elmnt) {
     /*close all autocomplete lists in the document,
     except the one passed as an argument:*/
@@ -227,7 +230,7 @@ function showSearchArray(inp, arr) {
     }
   }
   /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function (e) {
+  document.addEventListener("click", function(e) {
     closeAllLists(e.target);
   });
 } // end function showSearchArray
@@ -237,7 +240,6 @@ function showSearchArray(inp, arr) {
 
 
 function createCard(passedCard) {
-  console.log("Sending");
   const cardName = passedCard[0].name;
   //create all elements
   // main wrapper for the card
@@ -265,7 +267,6 @@ function createCard(passedCard) {
   cardFav.setAttribute('data-card-name', cardName);
   cardTitleContainer.appendChild(cardFav);
   // If the card is already in the favorites list,
-  console.log(favsList.includes(cardName));
   if (favsList.includes(cardName)) {
     cardFav.setAttribute('data-state', 'favorited');
     cardFav.setAttribute('class', 'fas fa-star fa-lg favorite favorited');
@@ -289,7 +290,7 @@ function createCard(passedCard) {
   cardContent.appendChild(cardBodyWrapper);
 
   //text
-  if(passedCard[0].text !== undefined){
+  if (passedCard[0].text !== undefined) {
     console.log("adding text");
     console.log(passedCard[0])
     let cardParagraph = document.createElement('p');
@@ -299,7 +300,7 @@ function createCard(passedCard) {
     cardBodyWrapper.appendChild(cardParagraph);
   }
   //Flavor
-  if(passedCard[0].flavor !== undefined){
+  if (passedCard[0].flavor !== undefined) {
     console.log("adding Flavor");
     let cardFlavor = document.createElement('div');
     cardFlavor.setAttribute('class', 'flavor-text');
@@ -307,7 +308,7 @@ function createCard(passedCard) {
     cardTitleContainer.appendChild(cardFlavor);
   }
   //cost
-  if(passedCard[0].cost !== undefined){
+  if (passedCard[0].cost !== undefined) {
     console.log("adding card cost");
     let cardCost = document.createElement('span');
     cardCost.setAttribute('class', 'card-stat');
@@ -315,7 +316,7 @@ function createCard(passedCard) {
     cardBodyWrapper.appendChild(cardCost);
   }
   //attack
-  if(passedCard[0].attack !== undefined){
+  if (passedCard[0].attack !== undefined) {
     console.log("adding Attack");
     let cardAtk = document.createElement('span');
     cardAtk.setAttribute('class', 'card-stat');
@@ -324,7 +325,7 @@ function createCard(passedCard) {
   }
 
   //health
-  if(passedCard[0].health !== undefined){
+  if (passedCard[0].health !== undefined) {
     console.log("adding health");
     let cardHealth = document.createElement('span');
     cardHealth.setAttribute('class', 'card-stat');
@@ -332,7 +333,7 @@ function createCard(passedCard) {
     cardBodyWrapper.appendChild(cardHealth);
   }
   //health
-  if(passedCard[0].durability !== undefined){
+  if (passedCard[0].durability !== undefined) {
     console.log("adding durability");
     let cardDur = document.createElement('span');
     cardDur.setAttribute('class', 'card-stat');
@@ -348,12 +349,20 @@ function createCard(passedCard) {
 } // end function createCard
 
 
-$("#search-results").on("click", ".favorite", function () {
+// create favorites bar inital list on load
+for (let i = 0; i < favsList.length; i++) {
+  favDiv = document.createElement("div");
+  favDiv.className = "favDivs";
+  favDiv.innerHTML = favsList[i];
+  $("#favSidebar").prepend(favDiv);
+};
+
+
+$("#search-results").on("click", ".favorite", function() {
   const card = $(this);
   const cardName = card.attr("data-card-name");
   console.log(cardName + " " + favsList);
   if (favsList.indexOf(cardName) > -1) {
-    console.log("already favorited! - unfavoriting");
     // RUN UNFAVORITE CODE
     unFavorite(card, cardName);
   } else {
@@ -362,9 +371,18 @@ $("#search-results").on("click", ".favorite", function () {
       card.addClass("favorited");
       favsList.push(cardName);
       localStorage.setItem("favsList", JSON.stringify(favsList));
+      // create favorites list dynamically as favorites are added
+      $("#favSidebar").empty();
+      favsList = JSON.parse(localStorage.getItem("favsList"));
+      for (let i = 0; i < favsList.length; i++) {
+        let favDiv = document.createElement("div");
+        favDiv.className = "favDivs";
+        favDiv.innerHTML = favsList[i];
+        $("#favSidebar").prepend(favDiv);
+      };
+
     } else {
       unFavorite(card, cardName);
-      console.log(favoritedCardNames);
     }
   }
 
@@ -372,7 +390,6 @@ $("#search-results").on("click", ".favorite", function () {
 });
 
 function unFavorite(x, y) {
-  console.log("unfavorited");
   x.attr("data-state", "unfavorited");
   x.removeClass("favorited");
 
@@ -383,22 +400,31 @@ function unFavorite(x, y) {
     }
   }
   localStorage.setItem("favsList", JSON.stringify(favsList) || []);
+  $("#favSidebar").empty();
+  favsList = JSON.parse(localStorage.getItem("favsList"));
+  for (let i = 0; i < favsList.length; i++) {
+    let favDiv = document.createElement("div");
+    favDiv.className = "favDivs";
+    favDiv.innerHTML = favsList[i];
+    $("#favSidebar").prepend(favDiv);
+  };
+
+
+
 };
 
-document.addEventListener("DOMContentLoaded", function (func) {
+document.addEventListener("DOMContentLoaded", function(func) {
   const streamers = [];
 
 
   function hearthstoneQuery(card) {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
-      headers: {
-        "X-RapidAPI-Key": "de7e1386a0msh4a81fc191231dbbp121289jsn9b9280ac7bc4",
-      } // end headers          // **** DO NOT CHANGE API KEY ****
-    })
+        headers: {
+          "X-RapidAPI-Key": "de7e1386a0msh4a81fc191231dbbp121289jsn9b9280ac7bc4",
+        } // end headers          // **** DO NOT CHANGE API KEY ****
+      })
       .then(response => response.json())
       .then(data => {
-        console.log("Success");
-        console.log(data);
         createCard(data);
       })
       .catch(error => console.log(error))
@@ -409,21 +435,23 @@ document.addEventListener("DOMContentLoaded", function (func) {
     // hearthstoneID is the id from twitch.tv documentation.
     const hearthstoneID = "138585";
     fetch("https://api.twitch.tv/helix/streams?game_id=" + hearthstoneID, {
-      headers: {
-        "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
-      } // end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
-    })
+        headers: {
+          "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
+        } // end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
+      })
       .then(response => response.json())
       .then(data => {
+<<<<<<< HEAD
         console.log("twitch Query success");
         console.log(data);
         loadTitle(data);
         data.data.forEach(function (user, i) {
+=======
+        data.data.forEach(function(user, i) {
+>>>>>>> 27ae33aa45e08be889b55e713ae9af5d3e6bd263
           const channel = data.data[i].user_name;
-          console.log("RESPONSE IS " + channel)
           streamers.push(channel);
         });
-        console.log("LOADING " + streamers);
         new Twitch.Embed("twitch-embed", {
           width: `100%`,
           height: `560`,
@@ -434,26 +462,34 @@ document.addEventListener("DOMContentLoaded", function (func) {
       .catch(error => console.log(error))
   }; // end TwitchQuery function
 
-//Begin sidebar functionality
-$("#hamburger").on("click", function openSidebar(){
-    $("#glossarySidebar").toggleClass("open")});
-$("#favStar").on("click", function openSidebar(){
-  $("#favSidebar").toggleClass("open");
+  //Begin sidebar functionality
+  $("#hamburger").on("click", function openSidebar() {
+    $("#glossarySidebar").toggleClass("open")
+  });
+  $("#favStar").on("click", function openSidebar() {
+    $("#favSidebar").toggleClass("open");
 
-});
+    // //Begin sidebar functionality
+    // $("#hamburger").on("click", function openSidebar() {
+    //   $("#glossarySidebar").toggleClass("open")
+    // });
+    // $("#favStar").on("click", function openSidebar() {
+    //   $("#favSidebar").toggleClass("open");
+
+  });
 
 
   // on search button pressed
-  document.querySelector("#searchButton").addEventListener("click", function(e){
+  document.querySelector("#searchButton").addEventListener("click", function(e) {
     let cardToSearch = document.querySelector("#myInput").value;
     hearthstoneQuery(cardToSearch);
-  })
+  });
 
 
 
   hearthstoneQuery("Chicken");
   hearthstoneQuery("Arcane Shot");
-  twitchQuery()
+  twitchQuery();
 
 }); // end DOM content loaded;
 
