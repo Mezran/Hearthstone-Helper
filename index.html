@@ -49,15 +49,455 @@
         </form>
     </nav>
 
-    <div id= "sidebar" class="sidebar box">
+    <div id="sidebar" class="sidebar box">
         <ul>
-            <li><img src="./assets/images/hamburger.svg" alt="open menu" class="sidebarImg" id= "hamburger"></li>
-            <li><img src="./assets/images/star.svg" alt="open menu" class="sidebarImg" id= "favStar"></li>
+            <li><img src="./assets/images/hamburger.svg" alt="open menu" class="sidebarImg" id="hamburger"></li>
+            <li><img src="./assets/images/star.svg" alt="open menu" class="sidebarImg" id="favStar"></li>
         </ul>
     </div>
 
-    <div id= "glossarySidebar" class="sidebar sidebar-content box">
-        Glossary goes here.
+    <div id="glossarySidebar" class="sidebar sidebar-content box">
+        <div>
+            <h1 id="glossary-top">Glossary</h1>
+            <div class="glossary-quick-links-container">
+                <a href="#glossary-keywords" class="glossary-quick-links">Keywords</a>
+                <a href="#glossary-generation-abilities" class="glossary-quick-links">Generation Abilities</a>
+                <a href="#glossary-other-abilities" class="glossary-quick-links">Other Abilities</a>
+                <a href="#glossary-types-of-ability" class="glossary-quick-links">Types of Ability</a>
+            </div>
+
+            <h2 class="mt-4">About</h2>
+            <hr>
+            <span>Abilities are special effects, powers, or behaviors found on cards. For spell cards, the ability
+                describes the total effect of playing that card, while for minion and weapon cards, abilities are
+                special effects or powers additional to the basic functions of the card. Abilities may be described in
+                the card's text, or granted by enchantments.</span>
+            <a href="https://hearthstone.gamepedia.com/Ability" target="_blank" class="source-link"></a>
+        </div>
+
+        <div class="mt-4">
+            <h2 class="glossary-section-header" id="glossary-keywords">Keywords</h2>
+            <a href="#glossary-top" class="glossary-quick-links">Back to Top</a>
+            <hr>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Adapt</h5>
+                <p>Choose from one of three possible upgrades to the possessing minion.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Battlecry</h5>
+                <p>Battlecry is a type of triggered effect, which activates when the card is played from your hand.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Casts When Drawn</h5>
+                <p>The spell card is automatically cast for no mana when drawn from your deck, and the next card in the
+                    deck is then drawn. Only found on a few Uncollectible spells.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Charge</h5>
+                <p>Enables the minion to attack on the same turn that it is summoned.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Choose One</h5>
+                <p>Gives the controlling player the ability to choose between two or more effects stated in the card.
+                    Found only on druid cards.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Choose Twice</h5>
+                <p>A variation of Choose One that allows the player to combine two options (or pick the same option
+                    twice) from a list. Found only on druid cards.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Combo</h5>
+                <p>Triggers an effect if you already played another card this turn. Found only on rogue cards.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Counter</h5>
+                <p>Prevents a spell that was just cast from taking effect. Currently the only card to use Counter is the
+                    mage spell Counterspell; see that page for details.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Deathrattle</h5>
+                <p>Deathrattle is a type of triggered effect, which activates when the minion dies. It is identified by
+                    a skull and crossbones that appears at the bottom of the minion's portrait.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Discover</h5>
+                <p>Choose one card from three random class-appropriate cards, then add it to your hand.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Divine Shield</h5>
+                <p>Absorbs the first source of damage taken by the minion, removing the shield.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Echo</h5>
+                <p>Adds another copy of the card to your hand after it's played that disappears at the end of your turn.
+                </p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Freeze</h5>
+                <p>Frozen characters lose their next attack.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Immune</h5>
+                <p>Immune is an ability that prevents damage dealt from any source to the target, and prevents all enemy
+                    interaction with the target.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Inspire</h5>
+                <p>Inspire is a type of triggered effect that activates each time the controlling hero uses their Hero
+                    Power. It is identified by a blue flag that appears at the bottom of the minion's portrait.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Lifesteal</h5>
+                <p>Lifesteal is a type of triggered effect, which causes damage dealt by the card to also restore Health
+                    to the controlling hero. It is identified by a broken purple heart that appears at the bottom of the
+                    minion's portrait.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Magnetic</h5>
+                <p>Placing a Magnetic minion to the left of a Mech merges the two cards together, combining their stats
+                    and effects.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Mega-Windfury</h5>
+                <p>Can attack four times each turn. Mega-Windfury is indicated by multiple wind-like lines around the
+                    card.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Overkill</h5>
+                <p>A bonus is rewarded when dealing more damage than needed to kill its target.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Overload</h5>
+                <p>You have {X} less mana next turn. This effect is activated when the card is played from the hand, and
+                    typically allows a powerful card to be played for a low mana cost this round, at the price of
+                    reduced mana next turn. Found only on shaman cards.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Passive</h5>
+                <p>Cards that continuously provide a global effect to the game via an aura. Passive hero powers are a
+                    main source of this ability. All Passive cards currently known have no mana cost associated with
+                    them.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Poisonous</h5>
+                <p>Any minion damaged by a Poisonous minion is destroyed. A type of triggered effect, Poisonous is
+                    identified by a green bubbling flask at the bottom of the minion's portrait.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Quest</h5>
+                <p>Similar to Secrets, Quests are a special type of spell card that does not take effect until certain
+                    requirements are met, triggering its effect. Unlike Secrets, Quests can be seen by the opponent, and
+                    the conditions must be met by the possessing player rather than the opponent. Each deck can include
+                    only one Quest, which will be automatically included in the player's mulligan. All Quests are
+                    legendary.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Reborn</h5>
+                <p>The first time the minion dies, it returns to life with 1 Health remaining.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Recruit</h5>
+                <p>Summons a random minion from the player's deck. A keyworded version of Put into battlefield, found
+                    only on Kobolds & Catacombs cards with this effect.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Rush</h5>
+                <p>Enables the minion to attack enemy minions on the same turn that it is summoned.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Secret</h5>
+                <p>A special type of spell card that remains hidden until its trigger condition occurs, revealing it and
+                    triggering its effect. Most Secrets can only be activated during the opponent's turn, but some
+                    exceptions activate at the start of the player's next turn. Only one of any given Secret can be in
+                    play for a given player at a time.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Silence</h5>
+                <p>Removes all card text, enchantments, and abilities from the target minion, except for auras provided
+                    by external cards in play. Silence does not prevent enchantments and abilities from being applied to
+                    said minion afterwards, however.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Start of Game</h5>
+                <p>A type of triggered effect that activates at the start of the game.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Stealth</h5>
+                <p>Minions with Stealth may not be the target of enemy attacks, spells or abilities until they attack or
+                    deal damage. Once they attack or deal damage, Stealth is removed. Minions with Stealth can still be
+                    affected by AoE spells such as Consecration, and randomly targeted spells such as Arcane Missiles.
+                </p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Spell Damage</h5>
+                <p>Increases the output of your damaging spells by {X}. Spell Damage is indicated by blue and purple
+                    sparkles rising from the card.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Taunt</h5>
+                <p>Enemies must attack minions with Taunt before any non-Taunt characters. This includes minions and
+                    hero attacks. Taunt is illustrated by a large shield-like border.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Twinspell</h5>
+                <p>Casting the spell puts another copy into your hand, but without the Twinspell ability.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Windfury</h5>
+                <p>Can attack twice each turn. Windfury is indicated by multiple wind-like lines around the card.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5"></h5>
+                <p></p>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h2 class="glossary-section-header" id="glossary-generation-abilities">Generation Abilities</h2>
+            <a href="#glossary-top" class="glossary-quick-links">Back to Top</a>
+            <hr>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Death Knight</h5>
+                <p>Death Knight spell cards that are generated from The Lich King and Arfus.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Jade Golem</h5>
+                <p>Each Jade Golem summoned throughout the match is +1/+1 larger than the last. Found only on Druid,
+                    Rogue, Shaman, and Jade Lotus Tri-class cards.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Lackey</h5>
+                <p>1/1 minions with useful Battlecries.</p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Spare Part</h5>
+                <p>1 mana spells with minor benefits.</p>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h2 class="glossary-section-header" id="glossary-other-abilities">Other Abilities</h2>
+            <a href="#glossary-top" class="glossary-quick-links">Back to Top</a>
+            <hr>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Can't attack</h5>
+                <p>Prevents a card from attacking.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Can't attack heroes</h5>
+                <p>Prevents a card from attacking a hero.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Card draw effect</h5>
+                <p>Causes the player to draw one or more cards from their deck.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Cast spell</h5>
+                <p>Casts a spell on behalf of the controlling player.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Copy</h5>
+                <p>Copies an existing card. Usually combined with a Summon effect to summon the copy into the
+                    battlefield, or a generate effect to place it into the player's hand.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Deal damage</h5>
+                <p>Deals damage to a character, attempting to reduce its Health by the stated amount.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Destroy</h5>
+                <p>Destroys a minion, weapon, Secret or Hero without dealing damage to it.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Disable Hero Power</h5>
+                <p>Causes both players to be unable to use their Hero Power. This effect does not work against
+                    Adventure- and Mission-specific Hero Powers.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Discard</h5>
+                <p>Causes the player to discard one or more cards from their hand.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Elusive</h5>
+                <p>An unofficial term for minions which cannot be targeted by spells or Hero Powers, from either
+                    player.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Enchant</h5>
+                <p>Modifies the statistics or card text of one or more cards. May be temporary, permanent, or
+                    ongoing.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Enrage</h5>
+                <p>While damaged, this minion gains the stated effect. Prior to Patch 11.0.0.23966, Enrage appeared
+                    as a keyword, but was replaced with generic text due to its scarcity.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Equip</h5>
+                <p>Equips the hero with the stated weapon.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Forgetful</h5>
+                <p>A term for a minion which has a 50% chance of attacking the wrong enemy. Forgetful is a type of
+                    triggered effect.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Gain Armor</h5>
+                <p>Causes the controlling hero to gain Armor.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Generate</h5>
+                <p>Generates a new card, and places it into the player's hand.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Increment attribute</h5>
+                <p>Adds or subtracts a value from something's Attack, Health, Cost, or Durability.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Joust</h5>
+                <p>Reveals a random card from each player's deck. If the player who initiated the Joust produces a
+                    card with a higher mana cost, they win the Joust, activating a secondary effect. Both cards are
+                    then shuffled back into their respective decks.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Mind control effect</h5>
+                <p>Transfers ownership of the targeted minion.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Modify cost</h5>
+                <p>Alters the mana cost of another card or Hero Power.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Multiply attribute</h5>
+                <p>Multiplies something's Attack, Health or Cost by some value, which so far has always been 2.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">No Durability loss</h5>
+                <p>Causes the possessing hero's weapon to not lose any Durability during their turn.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Permanent</h5>
+                <p>Permanent "minions" lack Mana cost, Attack and Health, are untargetable, are immune to all
+                    effects except their own, do not count as minions for effects, and take up a more or less
+                    permanent residence on the battlefield.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Playerbound</h5>
+                <p>Provides a permanent effect bound to the player. Similar to the aura-generation effect associated
+                    with the keyword ability "Passive".<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Put into battlefield</h5>
+                <p>Directly places a card from the player's deck or hand into the battlefield, without triggering
+                    any Battlecries.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Put into hand</h5>
+                <p>Draws cards of a specific type directly from the player's deck and places them into the player's
+                    hand.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Refresh Mana</h5>
+                <p>Refills the player's empty Mana Crystals.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Remove from deck</h5>
+                <p>Removes cards directly from the player's deck, without placing them into the hand. Similar to
+                    discard effects.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Replace</h5>
+                <p>Replace one card with another, without destroying or discarding the original card.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Restore Health</h5>
+                <p>Heals a character, increasing their Health by the stated amount, up to but not beyond their
+                    current maximum Health.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Return</h5>
+                <p>Returns the target minion to its owner's hand.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Set attribute</h5>
+                <p>Via an enchantment, assigns a new value for something's Attack, Health, or Cost.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Shuffle into deck</h5>
+                <p>Places a card into a player's unused deck, with its placement randomly determined.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Spend mana</h5>
+                <p>Spends mana in addition to the normal mana cost to produce an extra effect. Currently, all cards
+                    with this ability spend all available mana, and the effect is proportional to the amount of mana
+                    spent.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Summon</h5>
+                <p>Summons the specified minion/s. Distinct from simply playing a minion card from the hand, this is
+                    an ability found on spell or minion cards, sometimes triggered by a Battlecry or Deathrattle.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Transform</h5>
+                <p>Changes a minion into something else irreversibly, entirely replacing the previous card.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Transform in hand</h5>
+                <p>At the start of the controlling player's turn, changes a card into something else while it is in
+                    the player's hand.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Unlimited attacks</h5>
+                <p>Allows the possessing hero to attack any number of times each turn.<p>
+            </div>
+        </div>
+
+        <div class="mt-4">
+            <h2 class="glossary-section-header" id="glossary-types-of-ability">Types of Ability</h2>
+            <a href="#glossary-top" class="glossary-quick-links">Back to Top</a>
+            <hr>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Area of effect</h5>
+                <p>Affects all characters of the stated type.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">In-hand effect</h5>
+                <p>Effects which activate while the card is in the player's hand.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">On-discard effect</h5>
+                <p>Effects which activate upon being discarded from the hand.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">On-draw effect</h5>
+                <p>Effects which activate upon being drawn from the deck.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Ongoing effect</h5>
+                <p>An ability which provides a specific effect on an ongoing basis.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Positional effect</h5>
+                <p>Takes effect depending on the specific order and position of minions on the battlefield.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Random effect</h5>
+                <p>Chooses a target or effect at random.<p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Removal</h5>
+                <p>Used to remove minions from the board. Generally refers to destroy, transform or high-damage effects.
+                    <p>
+            </div>
+            <div class="glossary-item">
+                <h5 class="glossary-h5">Triggered effect</h5>
+                <p>An effect or behaviour which only activates in response to a certain event. On minions, these are
+                    denoted by a lightning bolt icon at the bottom of the portrait.<p>
+            </div>
+        </div>
+
+
     </div>
 
     <div id= "favSidebar" class="sidebar sidebar-content box">
@@ -77,6 +517,9 @@
                         <i class="fas fa-star fa-lg favorite" data-card-name="example card" data-state="unfavorited"></i>
 
                         <span class="card-title">Card name here</span>
+
+                        <div class="flavor-text">Flavor text here</div>
+
                     </div>
                     <hr>
                     <div class="my-card-body">

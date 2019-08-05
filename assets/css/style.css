@@ -39,7 +39,7 @@ hr {
 /*auto-complete searchbar*/
 
 .input-group {
-    font: 16px Arial;  
+    font: 16px Arial;
     box-sizing: border-box;
 }
 .searchbar {
@@ -108,21 +108,21 @@ input[type=submit] {
     right: 0;
     max-height: 1200%;
     overflow-x: auto;
-    
+
 }
 .autocomplete-items div {
     padding: 10px;
     cursor: pointer;
-    background-color: #fff; 
-    border-bottom: 1px solid #d4d4d4; 
+    background-color: #fff;
+    border-bottom: 1px solid #d4d4d4;
 
 }
 .autocomplete-items div:hover {
-    background-color: #e9e9e9; 
+    background-color: #e9e9e9;
 }
 .autocomplete-active {
-    background-color: darkgray !important; 
-    color: #ffffff; 
+    background-color: darkgray !important;
+    color: #ffffff;
 }
 
   /* Sidebar */
@@ -153,8 +153,8 @@ input[type=submit] {
 
 .sidebar-content {
     z-index: 4;
-    width: 250px;
-    left: -250px;
+    width: 280px;
+    left: -280px;
     transition: left ease-in-out 0.3s;
 }
 
@@ -228,7 +228,7 @@ border-bottom-width: 2px;
 
 
 .favorited {
-    color: yellow;
+    color: #FF9B00;
 }
 
 .title-container {
@@ -241,6 +241,11 @@ border-bottom-width: 2px;
     vertical-align: middle;
     font-size: 2em;
     font-weight: bold;
+}
+
+.flavor-text{
+  font-size: 0.5em;
+  font-weight: lighter;
 }
 
 .my-card-body {
@@ -260,4 +265,54 @@ border-bottom-width: 2px;
     padding-right: 2%;
     text-align: center;
     overflow: hidden;
+}
+
+/* Glossary */
+
+#glossarySidebar {
+    color: #D8D8D8;
+    font-size: 14px;
+    overflow: auto;
+    word-wrap: break-word;
+    padding: 10px;
+    z-index: 10;
+}
+
+.source-link {
+    color: #555;
+    font-size: 12px;
+    line-height: 0.2em;
+    font-weight: bold;
+}
+
+.source-link::before {
+    content: "Source";
+}
+
+.glossary-h5 {
+    margin-top: 12px;
+}
+
+.back-to-top {
+    color: #08A6FF;
+}
+
+.glossary-quick-links-container {
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.glossary-quick-links {
+    color: #08A6FF;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(0,0,0,0);
+    transition: all 300ms ease;
+    margin: 2px 0;
+    padding-bottom: 2px;
+    display: block;
+}
+
+.glossary-quick-links:hover {
+    text-decoration: none;
+    border-bottom: 1px solid #08A6FF;
 }
