@@ -243,53 +243,96 @@ function createCard(passedCard) {
   // main wrapper for the card
   let cardWrapper = document.createElement('div');
   cardWrapper.setAttribute('class', 'myCard box');
-  // cardWrapper.setAttribute('class', 'box');
   //card image
   let cardImage = document.createElement('img');
   cardImage.setAttribute('class', 'card-image');
   cardImage.setAttribute('src', passedCard[0].img);
+  cardWrapper.appendChild(cardImage);
+
   //content wrapper
   let cardContent = document.createElement('div');
   cardContent.setAttribute('class', 'card-content');
+  cardWrapper.appendChild(cardContent);
+
   //title container
   let cardTitleContainer = document.createElement('div');
   cardTitleContainer.setAttribute('class', 'title-container');
+  cardContent.appendChild(cardTitleContainer);
+
   // star i
   let cardFav = document.createElement('i');
   cardFav.setAttribute('class', 'fas fa-star fa-lg favorite');
   cardFav.setAttribute('data-card-name', 'example card2');
   cardFav.setAttribute('data-state', 'unfavorited');
+  cardTitleContainer.appendChild(cardFav);
+
 
   // create card title span
   let cardTitle = document.createElement('span');
   cardTitle.setAttribute('class', 'card-title');
   cardTitle.innerHTML = passedCard[0].name;
+  cardTitleContainer.appendChild(cardTitle);
+
   //add hr
   let breakPt = document.createElement('hr');
+  cardContent.appendChild(breakPt);
+
   //card body
   let cardBodyWrapper = document.createElement('div');
   cardBodyWrapper.setAttribute('class', 'my-card-body');
-  //paragraph
-  let cardParagraph = document.createElement('p');
-  cardParagraph.innerHTML = passedCard[0].text;
-
-  //three If statements
-
-
-
-
-  // set data based on passedCard
-
-  // append elements to their place
-  cardWrapper.appendChild(cardImage);
-  cardWrapper.appendChild(cardContent);
-  cardContent.appendChild(cardTitleContainer);
-  cardTitleContainer.appendChild(cardFav);
-  cardTitleContainer.appendChild(cardTitle);
-  cardContent.appendChild(breakPt);
   cardContent.appendChild(cardBodyWrapper);
-  cardBodyWrapper.appendChild(cardParagraph);
 
+  //text
+  if(passedCard[0].text !== undefined){
+    console.log("adding text");
+    console.log(passedCard[0])
+    let cardParagraph = document.createElement('p');
+    let cardText = passedCard[0].text.split('\\n').join(' ');
+    console.log('****', cardText);
+    cardParagraph.innerHTML = cardText;
+    cardBodyWrapper.appendChild(cardParagraph);
+  }
+  //Flavor
+  if(passedCard[0].flavor !== undefined){
+    console.log("adding Flavor");
+    let cardFlavor = document.createElement('div');
+    cardFlavor.setAttribute('class', 'flavor-text');
+    cardFlavor.innerHTML = passedCard[0].flavor;
+    cardTitleContainer.appendChild(cardFlavor);
+  }
+  //cost
+  if(passedCard[0].cost !== undefined){
+    console.log("adding card cost");
+    let cardCost = document.createElement('span');
+    cardCost.setAttribute('class', 'card-stat');
+    cardCost.innerHTML = 'Cost: ' + passedCard[0].cost;
+    cardBodyWrapper.appendChild(cardCost);
+  }
+  //attack
+  if(passedCard[0].attack !== undefined){
+    console.log("adding Attack");
+    let cardAtk = document.createElement('span');
+    cardAtk.setAttribute('class', 'card-stat');
+    cardAtk.innerHTML = 'Attack: ' + passedCard[0].attack;
+    cardBodyWrapper.appendChild(cardAtk);
+  }
+
+  //health
+  if(passedCard[0].health !== undefined){
+    console.log("adding health");
+    let cardHealth = document.createElement('span');
+    cardHealth.setAttribute('class', 'card-stat');
+    cardHealth.innerHTML = 'Health: ' + passedCard[0].health;
+    cardBodyWrapper.appendChild(cardHealth);
+  }
+  //health
+  if(passedCard[0].durability !== undefined){
+    console.log("adding durability");
+    let cardDur = document.createElement('span');
+    cardDur.setAttribute('class', 'card-stat');
+    cardDur.innerHTML = 'Durability: ' + passedCard[0].durability;
+    cardBodyWrapper.appendChild(cardDur);
+  }
 
   // append wrapper to card location
   document.querySelector("#search-results").prepend(cardWrapper);
@@ -383,9 +426,6 @@ document.addEventListener("DOMContentLoaded", function(func) {
     hearthstoneQuery(cardToSearch);
   })
 
-
-
-  hearthstoneQuery("Chicken");
   twitchQuery()
 
 }); // end DOM content loaded;
