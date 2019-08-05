@@ -23,9 +23,9 @@ hr {
 .navbar {
     position: relative;
     border-bottom: 1px solid #50506B;
-    overflow: show;
+    overflow: visible;
     padding: 32px 13px;
-    z-index: 10;
+    z-index: 5;
 }
 
 .brand {
@@ -128,34 +128,34 @@ input[type=submit] {
   /* Sidebar */
 
 .sidebar {
-    z-index: 5;
+    z-index: 15;
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 80px;
-    padding-top: 106px;
     color: whitesmoke;
-}
-
-.sidebar ul {
-    text-align: center;
-}
-
-.sidebar ul li {
-    padding-top: 36px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .sidebarImg {
+    margin-top: 36px;
     width: 40%;
     cursor: pointer;
 }
 
 .sidebar-content {
-    z-index: 4;
-    width: 280px;
+    z-index: 10;
+    position: fixed;
+    top: 0;
     left: -280px;
-    transition: left ease-in-out 0.3s;
+    height: 100vh;
+    width: 280px;
+    transition: left ease-in-out 300ms;
+    color: whitesmoke;
 }
 
 .sidebar-content.open {
