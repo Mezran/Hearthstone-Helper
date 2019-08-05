@@ -168,7 +168,52 @@ input[type=submit] {
     position: relative;
     left: 80px;
     width: calc(100% - 80px);
-    padding: 40px 20px;
+    padding: 40px;
+}
+
+.title-bar {
+    width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+    color: #D8D8D8;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+#streamer-name {
+    flex-grow: 1;
+    margin: 4px;
+    padding-right: 14px;
+    border-right: 1px solid #50506B;
+}
+
+#stream-title {
+    flex-grow: 1;
+    font-size: 1.4em;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+#title-buttons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#title-buttons .btn {
+    margin-right: 20px;
+}
+
+/* Twitch portal */
+
+#twitch-embed {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    overflow: hidden;
 }
 
 /* favorites bar */
@@ -255,16 +300,6 @@ border-bottom-width: 2px;
 
 .card-stat {
     margin-right: 24px;
-}
-
-/* Twitch portal */
-
-#twitch-embed {
-    width: 100%;
-    padding-left: 2%;
-    padding-right: 2%;
-    text-align: center;
-    overflow: hidden;
 }
 
 /* Glossary */

@@ -505,7 +505,25 @@
     </div>
 
     <div class="main-container">
-        <div id="twitch-embed"></div>
+        <div class="title-bar box">
+            <div class="p-3">
+                <h2 id="streamer-name">Loading...</h2>
+            </div>
+            <div>
+                <div id="stream-title">
+                    
+                </div>
+                <div id="stream-viewers">
+                    
+                </div>
+            </div>
+            <div id="title-buttons">
+                <button class="btn btn-outline-primary" id="nextStreamer">Next Streamer</button>
+                <button class="btn btn-outline-light" id="previousStreamer">Previous Streamer</button>
+            </div>
+        </div>
+
+        <div id="twitch-embed" class="box"></div>
 
         <div id="search-results">
             <!-- <div class="myCard box"> //We can delete this? or keep for reference
