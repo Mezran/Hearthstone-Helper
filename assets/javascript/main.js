@@ -398,6 +398,8 @@ function unFavorite(x, y) {
 
 
 function buildFavs() {
+  updateStars();
+
   $("#favSidebarContainer").empty();
   favsList = JSON.parse(localStorage.getItem("favsList"));
   for (let i = 0; i < favsList.length; i++) {
@@ -535,6 +537,20 @@ function unfavoriteAll() {
   favsList = [];
   localStorage.setItem("favsList", JSON.stringify(favsList) || []);
   buildFavs();
+}
+
+function updateStars() {
+  console.log("Updating stars in dom");
+  const stars = $(".favorite").toArray();
+  console.log(stars);
+  for (let i = 0; i < stars.length; i ++ ) {
+    console.log($(stars[i]).attr("data-state"));
+    if ($(stars[i]).attr("data-state") === "favorited" && !favsList.includes( $(stars[i]).attr("data-card-name") ) ) {
+      console.log("Match!");
+      $(stars[i]).attr("data-state", "unfavorited");
+      $(stars[i]).removeClass("favorited");
+    }
+  }
 }
 
 $("#unfavoriteBtn").on("click", function () {
