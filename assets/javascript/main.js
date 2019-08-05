@@ -1,18 +1,17 @@
 let arraySelection = cardName;
-const favoritedCardNames = [];
 
+var favsList = JSON.parse(localStorage.getItem("favsList")) || [];
 
 autocomplete(document.getElementById("myInput"), (arraySelection));
 
-
-$(".dropdown-item").click(function() {
+$(".dropdown-item").click(function () {
   let text = $(this).text(); // get text of the clicked item
   $("#dropdownMenu2").text(text); // set text to the button (dropdown)
   arraySelection = $(this).val() === 'cardName' ?
     cardName :
     $(this).val() === 'cardType' ?
-    cardType :
-    cardClass
+      cardType :
+      cardClass
 
 
   if (arraySelection === cardName) {
@@ -28,7 +27,7 @@ function autocomplete(inp, arr) {
   the text field element and an array of possible autocompleted values:*/
   let currentFocus;
   /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
+  inp.addEventListener("input", function (e) {
     let firstNewDiv;
     let secondNewDiv;
     let i, val = this.value;
@@ -57,7 +56,7 @@ function autocomplete(inp, arr) {
         /*insert a input field that will hold the current array item's value:*/
         secondNewDiv.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
         /*execute a function when someone clicks on the item value (DIV element):*/
-        secondNewDiv.addEventListener("click", function(e) {
+        secondNewDiv.addEventListener("click", function (e) {
           /*insert the value for the autocomplete text field:*/
           inp.value = this.getElementsByTagName("input")[0].value;
           /*close the list of autocompleted values,
@@ -71,7 +70,7 @@ function autocomplete(inp, arr) {
 
 
   /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function(e) {
+  inp.addEventListener("keydown", function (e) {
     var x = document.getElementById(this.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode == 40) {
@@ -125,7 +124,7 @@ function autocomplete(inp, arr) {
     }
   }
   /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function(e) {
+  document.addEventListener("click", function (e) {
     closeAllLists(e.target);
   });
 }
@@ -196,7 +195,7 @@ function showSearchArray(inp, arr) {
   the text field element and an array of possible autocompleted values:*/
   let currentFocus;
   /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
+  inp.addEventListener("input", function (e) {
     let firstNewDiv;
     let secondNewDiv;
     let i, val = this.value;
@@ -223,7 +222,7 @@ function showSearchArray(inp, arr) {
       /*insert a input field that will hold the current array item's value:*/
       secondNewDiv.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
       /*execute a function when someone clicks on the item value (DIV element):*/
-      secondNewDiv.addEventListener("click", function(e) {
+      secondNewDiv.addEventListener("click", function (e) {
         /*insert the value for the autocomplete text field:*/
         inp.value = this.getElementsByTagName("input")[0].value;
         /*close the list of autocompleted values,
@@ -237,7 +236,7 @@ function showSearchArray(inp, arr) {
 
 
   /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function(e) {
+  inp.addEventListener("keydown", function (e) {
     var x = document.getElementById(this.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode == 40) {
@@ -291,7 +290,7 @@ function showSearchArray(inp, arr) {
     }
   }
   /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function(e) {
+  document.addEventListener("click", function (e) {
     closeAllLists(e.target);
   });
 
@@ -299,41 +298,53 @@ function showSearchArray(inp, arr) {
 
 
 
-$("#search-results").on("click", ".favorite", function() {
+$("#search-results").on("click", ".favorite", function () {
   const card = $(this);
   const cardName = card.attr("data-card-name");
-  console.log(cardName);
-  if (card.attr("data-state") === "unfavorited") {
-    console.log("Favorited");
-    card.attr("data-state", "favorited");
-    card.addClass("favorited");
-    favoritedCardNames.push(cardName);
+  console.log(cardName + " " + favsList);
+  if (favsList.indexOf(cardName) > -1) {
+    console.log("already favorited!");
+    // RUN UNFAVORITE CODE
+    unFavorite(card, cardName);
   } else {
-    console.log("unfavorited");
-    card.attr("data-state", "unfavorited");
-    card.removeClass("favorited");
-
-    // Remove the card from the favorites array
-    for (var i = favoritedCardNames.length - 1; i >= 0; i--) {
-      if (favoritedCardNames[i] === cardName) {
-        favoritedCardNames.splice(i, 1);
-      }
+    if (card.attr("data-state") === "unfavorited") {
+      card.attr("data-state", "favorited");
+      card.addClass("favorited");
+      favsList.push(cardName);
+      localStorage.setItem("favsList", JSON.stringify(favsList));
+    } else {
+      unFavorite(card, cardName);
+      console.log(favoritedCardNames);
     }
-
-    console.log(favoritedCardNames);
   }
-})
 
-document.addEventListener("DOMContentLoaded", function(func) {
+  // RUN FUTURE SIDEBAR REFRESH FUNCTION
+});
+
+function unFavorite(x, y) {
+  console.log("unfavorited");
+  x.attr("data-state", "unfavorited");
+  x.removeClass("favorited");
+
+  // Remove the card from the favorites array
+  for (var i = favsList.length - 1; i >= 0; i--) {
+    if (favsList[i] === y) {
+      favsList.splice(i, 1);
+    }
+  }
+  localStorage.setItem("favsList", JSON.stringify(favsList) || []);
+};
+
+document.addEventListener("DOMContentLoaded", function (func) {
   const streamers = [];
 
 
   function hearthstoneQuery(card) {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
-        headers: {
-          "X-RapidAPI-Key": "de7e1386a0msh4a81fc191231dbbp121289jsn9b9280ac7bc4",
-        } // end headers          // **** DO NOT CHANGE API KEY ****
-      })
+      headers: {
+        "X-RapidAPI-Key": "de7e1386a0msh4a81fc191231dbbp121289jsn9b9280ac7bc4",
+      } // end headers          // **** DO NOT CHANGE API KEY ****
+    })
       .then(response => response.json())
       .then(data => {
         console.log("Success");
@@ -347,15 +358,15 @@ document.addEventListener("DOMContentLoaded", function(func) {
     // hearthstoneID is the id from twitch.tv documentation.
     const hearthstoneID = "138585";
     fetch("https://api.twitch.tv/helix/streams?game_id=" + hearthstoneID, {
-        headers: {
-          "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
-        } // end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
-      })
+      headers: {
+        "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
+      } // end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
+    })
       .then(response => response.json())
       .then(data => {
         console.log("twitch Query success");
         console.log(data);
-        data.data.forEach(function(user, i) {
+        data.data.forEach(function (user, i) {
           const channel = data.data[i].user_name;
           console.log("RESPONSE IS " + channel)
           streamers.push(channel);
