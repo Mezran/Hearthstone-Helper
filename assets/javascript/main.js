@@ -4,14 +4,14 @@ var favsList = JSON.parse(localStorage.getItem("favsList")) || [];
 
 autocomplete(document.getElementById("myInput"), (arraySelection));
 
-$(".dropdown-item").click(function() {
+$(".dropdown-item").click(function () {
   let text = $(this).text(); // get text of the clicked item
   $("#dropdownMenu2").text(text); // set text to the button (dropdown)
   arraySelection = $(this).val() === 'cardName' ?
     cardName :
     $(this).val() === 'cardType' ?
-    cardType :
-    cardClass
+      cardType :
+      cardClass
 
 
   if (arraySelection === cardName) {
@@ -27,7 +27,7 @@ function autocomplete(inp, arr) {
   the text field element and an array of possible autocompleted values:*/
   let currentFocus;
   /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
+  inp.addEventListener("input", function (e) {
     let firstNewDiv;
     let secondNewDiv;
     let i, val = this.value;
@@ -56,7 +56,7 @@ function autocomplete(inp, arr) {
         /*insert a input field that will hold the current array item's value:*/
         secondNewDiv.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
         /*execute a function when someone clicks on the item value (DIV element):*/
-        secondNewDiv.addEventListener("click", function(e) {
+        secondNewDiv.addEventListener("click", function (e) {
           /*insert the value for the autocomplete text field:*/
           inp.value = this.getElementsByTagName("input")[0].value;
           /*close the list of autocompleted values,
@@ -74,7 +74,7 @@ function autocomplete(inp, arr) {
 
 
   /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function(e) {
+  inp.addEventListener("keydown", function (e) {
     var x = document.getElementById(this.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode == 40) {
@@ -128,7 +128,7 @@ function autocomplete(inp, arr) {
     }
   }
   /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function(e) {
+  document.addEventListener("click", function (e) {
     closeAllLists(e.target);
   });
 } // end auto complete
@@ -139,7 +139,7 @@ function showSearchArray(inp, arr) {
   the text field element and an array of possible autocompleted values:*/
   let currentFocus;
   /*execute a function when someone writes in the text field:*/
-  inp.addEventListener("input", function(e) {
+  inp.addEventListener("input", function (e) {
     let firstNewDiv;
     let secondNewDiv;
     let i, val = this.value;
@@ -165,7 +165,7 @@ function showSearchArray(inp, arr) {
       /*insert a input field that will hold the current array item's value:*/
       secondNewDiv.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
       /*execute a function when someone clicks on the item value (DIV element):*/
-      secondNewDiv.addEventListener("click", function(e) {
+      secondNewDiv.addEventListener("click", function (e) {
         /*insert the value for the autocomplete text field:*/
         inp.value = this.getElementsByTagName("input")[0].value;
         /*close the list of autocompleted values,
@@ -176,7 +176,7 @@ function showSearchArray(inp, arr) {
     }
   })
   /*execute a function presses a key on the keyboard:*/
-  inp.addEventListener("keydown", function(e) {
+  inp.addEventListener("keydown", function (e) {
     var x = document.getElementById(this.id + "autocomplete-list");
     if (x) x = x.getElementsByTagName("div");
     if (e.keyCode == 40) {
@@ -230,7 +230,7 @@ function showSearchArray(inp, arr) {
     }
   }
   /*execute a function when someone clicks in the document:*/
-  document.addEventListener("click", function(e) {
+  document.addEventListener("click", function (e) {
     closeAllLists(e.target);
   });
 } // end function showSearchArray
@@ -350,15 +350,10 @@ function createCard(passedCard) {
 
 
 // create favorites bar inital list on load
-for (let i = 0; i < favsList.length; i++) {
-  favDiv = document.createElement("div");
-  favDiv.className = "favDivs";
-  favDiv.innerHTML = favsList[i];
-  $("#favSidebar").prepend(favDiv);
-};
+buildFavs();
 
 
-$("#search-results").on("click", ".favorite", function() {
+$("#search-results").on("click", ".favorite", function () {
   const card = $(this);
   const cardName = card.attr("data-card-name");
   console.log(cardName + " " + favsList);
@@ -370,16 +365,11 @@ $("#search-results").on("click", ".favorite", function() {
       card.attr("data-state", "favorited");
       card.addClass("favorited");
       favsList.push(cardName);
-      localStorage.setItem("favsList", JSON.stringify(favsList));
+      localStorage.setItem("favsList", JSON.stringify(favsList) || []);
+
       // create favorites list dynamically as favorites are added
-      $("#favSidebar").empty();
-      favsList = JSON.parse(localStorage.getItem("favsList"));
-      for (let i = 0; i < favsList.length; i++) {
-        let favDiv = document.createElement("div");
-        favDiv.className = "favDivs";
-        favDiv.innerHTML = favsList[i];
-        $("#favSidebar").prepend(favDiv);
-      };
+      buildFavs();
+
 
     } else {
       unFavorite(card, cardName);
@@ -400,29 +390,42 @@ function unFavorite(x, y) {
     }
   }
   localStorage.setItem("favsList", JSON.stringify(favsList) || []);
-  $("#favSidebar").empty();
-  favsList = JSON.parse(localStorage.getItem("favsList"));
-  for (let i = 0; i < favsList.length; i++) {
-    let favDiv = document.createElement("div");
-    favDiv.className = "favDivs";
-    favDiv.innerHTML = favsList[i];
-    $("#favSidebar").prepend(favDiv);
-  };
+  buildFavs();
+
 
 
 
 };
 
-document.addEventListener("DOMContentLoaded", function(func) {
+
+function buildFavs() {
+  $("#favSidebar").empty();
+  favsList = JSON.parse(localStorage.getItem("favsList"));
+  for (let i = 0; i < favsList.length; i++) {
+    let favDiv = document.createElement("button");
+    favDiv.className = "favDivs";
+    favDiv.innerHTML = favsList[i];
+    favDiv.value = favsList[i];
+    favDiv.setAttribute("id", favsList[i]);
+    $("#favSidebar").prepend(favDiv);
+    let hr = document.createElement("hr");
+    favDiv.append(hr);
+    
+
+
+  }
+};
+
+document.addEventListener("DOMContentLoaded", function (func) {
   const streamers = [];
 
 
   function hearthstoneQuery(card) {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
-        headers: {
-          "X-RapidAPI-Key": "de7e1386a0msh4a81fc191231dbbp121289jsn9b9280ac7bc4",
-        } // end headers          // **** DO NOT CHANGE API KEY ****
-      })
+      headers: {
+        "X-RapidAPI-Key": "de7e1386a0msh4a81fc191231dbbp121289jsn9b9280ac7bc4",
+      } // end headers          // **** DO NOT CHANGE API KEY ****
+    })
       .then(response => response.json())
       .then(data => {
         createCard(data);
@@ -435,10 +438,10 @@ document.addEventListener("DOMContentLoaded", function(func) {
     // hearthstoneID is the id from twitch.tv documentation.
     const hearthstoneID = "138585";
     fetch("https://api.twitch.tv/helix/streams?game_id=" + hearthstoneID, {
-        headers: {
-          "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
-        } // end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
-      })
+      headers: {
+        "Client-ID": "liwyc586ihqciruhrzqtsu5o3vvs64",
+      } // end headers    // **** DO NOT CHANGE CLIENT ID KEY ****
+    })
       .then(response => response.json())
       .then(data => {
         loadTitle(data);
@@ -477,12 +480,15 @@ document.addEventListener("DOMContentLoaded", function(func) {
 
 
   // on search button pressed
-  document.querySelector("#searchButton").addEventListener("click", function(e) {
+  document.querySelector("#searchButton").addEventListener("click", function (e) {
     let cardToSearch = document.querySelector("#myInput").value;
     hearthstoneQuery(cardToSearch);
   });
 
-
+    $(".favDivs").on("click", function (e) {
+    let cardToSearch = $(this).val();
+    hearthstoneQuery(cardToSearch);
+  });
 
   hearthstoneQuery("Chicken");
   hearthstoneQuery("Arcane Shot");
