@@ -399,7 +399,7 @@ function unFavorite(x, y) {
 
 
 function buildFavs() {
-  $("#favSidebar").empty();
+  $("#favSidebarContainer").empty();
   favsList = JSON.parse(localStorage.getItem("favsList"));
   for (let i = 0; i < favsList.length; i++) {
     let favDiv = document.createElement("button");
@@ -407,12 +407,13 @@ function buildFavs() {
     favDiv.innerHTML = favsList[i];
     favDiv.value = favsList[i];
     favDiv.setAttribute("id", favsList[i]);
-    $("#favSidebar").prepend(favDiv);
+    $("#favSidebarContainer").prepend(favDiv);
     let hr = document.createElement("hr");
     favDiv.append(hr);
-    
-
-
+  }
+  if (favsList.length == 0) {
+    console.log("Empty Favs!");
+    $("#favSidebarContainer").append("<p class='text-muted text-center m-3' style='font-size: 14px;'>No favorites yet. <br> Add favorites from your searches to save them here.</p>");
   }
 };
 
@@ -514,4 +515,14 @@ $("#nextStreamer").on("click", function () {
 
 $("#previousStreamer").on("click", function () {
   console.log("Previous Streamer Clicked");
+});
+
+function unfavoriteAll() {
+  favsList = [];
+  localStorage.setItem("favsList", JSON.stringify(favsList) || []);
+  buildFavs();
+}
+
+$("#unfavoriteBtn").on("click", function () {
+  unfavoriteAll();
 });

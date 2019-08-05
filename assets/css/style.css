@@ -222,15 +222,26 @@ input[type=submit] {
 .favDivs {
 color: whitesmoke;
 background-color: #17172E;
-
 margin: 10px;
 padding: 10px;
 border: none;
 display: block;
-
 }
 
+#favSidebar {
+    display: flex;
+    flex-direction: column;
+}
 
+#favSidebarContainer {
+    flex-basis: 100%;
+    overflow: auto;
+}
+
+#unfavoriteAll {
+    text-align: center;
+    padding: 32px 10px;
+}
 
 
 /* Cards styling */
