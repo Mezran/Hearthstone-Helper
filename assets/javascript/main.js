@@ -374,10 +374,10 @@ document.addEventListener("DOMContentLoaded", function(func) {
   
 //Begin sidebar functionality
 $("#hamburger").on("click", function openSidebar(){
-    $("#glossarySidebar").toggleClass("open");
+    $("#glossarySidebar").toggleClass("open")});
 $("#favStar").on("click", function openSidebar(){
   $("#favSidebar").toggleClass("open");
-})
+
 });
 
   
