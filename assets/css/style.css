@@ -23,9 +23,10 @@ hr {
 .navbar {
     position: relative;
     border-bottom: 1px solid #50506B;
-    overflow: show;
+    overflow: visible;
     padding: 32px 13px;
-    z-index: 10;
+    z-index: 5;
+    margin-left: 80px;
 }
 
 .brand {
@@ -128,34 +129,34 @@ input[type=submit] {
   /* Sidebar */
 
 .sidebar {
-    z-index: 5;
+    z-index: 15;
     position: fixed;
     top: 0;
     left: 0;
     height: 100vh;
     width: 80px;
-    padding-top: 106px;
     color: whitesmoke;
-}
-
-.sidebar ul {
-    text-align: center;
-}
-
-.sidebar ul li {
-    padding-top: 36px;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 .sidebarImg {
+    margin-top: 36px;
     width: 40%;
     cursor: pointer;
 }
 
 .sidebar-content {
-    z-index: 4;
-    width: 280px;
+    z-index: 10;
+    position: fixed;
+    top: 0;
     left: -280px;
-    transition: left ease-in-out 0.3s;
+    height: 100vh;
+    width: 280px;
+    transition: left ease-in-out 300ms;
+    color: whitesmoke;
 }
 
 .sidebar-content.open {
@@ -168,7 +169,52 @@ input[type=submit] {
     position: relative;
     left: 80px;
     width: calc(100% - 80px);
-    padding: 40px 20px;
+    padding: 40px;
+}
+
+.title-bar {
+    width: 100%;
+    height: auto;
+    margin-bottom: 12px;
+    color: #D8D8D8;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px;
+}
+
+#streamer-name {
+    flex-grow: 1;
+    margin: 4px;
+    padding-right: 14px;
+    border-right: 1px solid #50506B;
+}
+
+#stream-title {
+    flex-grow: 1;
+    font-size: 1.4em;
+    overflow: hidden;
+    max-width: 100%;
+}
+
+#title-buttons {
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#title-buttons .btn {
+    margin-right: 20px;
+}
+
+/* Twitch portal */
+
+#twitch-embed {
+    width: 100%;
+    padding: 12px;
+    text-align: center;
+    overflow: hidden;
 }
 
 /* favorites bar */
@@ -256,16 +302,6 @@ display: block;
 
 .card-stat {
     margin-right: 24px;
-}
-
-/* Twitch portal */
-
-#twitch-embed {
-    width: 100%;
-    padding-left: 2%;
-    padding-right: 2%;
-    text-align: center;
-    overflow: hidden;
 }
 
 /* Glossary */

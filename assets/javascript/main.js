@@ -444,6 +444,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
     })
       .then(response => response.json())
       .then(data => {
+        loadTitle(data);
         data.data.forEach(function (user, i) {
           const channel = data.data[i].user_name;
           streamers.push(channel);
@@ -460,18 +461,21 @@ document.addEventListener("DOMContentLoaded", function (func) {
 
   //Begin sidebar functionality
   $("#hamburger").on("click", function openSidebar() {
-    $("#glossarySidebar").toggleClass("open")
+    if ($("#favSidebar").hasClass("open")) {
+      $("#favSidebar").toggleClass("open");
+      $("#glossarySidebar").toggleClass("open")
+    } else {
+      $("#glossarySidebar").toggleClass("open")
+    }
   });
+  
   $("#favStar").on("click", function openSidebar() {
-    $("#favSidebar").toggleClass("open");
-
-    // //Begin sidebar functionality
-    // $("#hamburger").on("click", function openSidebar() {
-    //   $("#glossarySidebar").toggleClass("open")
-    // });
-    // $("#favStar").on("click", function openSidebar() {
-    //   $("#favSidebar").toggleClass("open");
-
+    if ($("#glossarySidebar").hasClass("open")) {
+      $("#glossarySidebar").toggleClass("open");
+      $("#favSidebar").toggleClass("open")
+    } else {
+      $("#favSidebar").toggleClass("open")
+    }
   });
 
 
@@ -491,3 +495,23 @@ document.addEventListener("DOMContentLoaded", function (func) {
   twitchQuery();
 
 }); // end DOM content loaded;
+
+// Load title's content 
+function loadTitle(data) {
+  console.log("Load title function!");
+  const streamerName = data.data[0].user_name; 
+  const viewers = data.data[0].viewer_count;
+  const streamTitle = data.data[0].title;
+  console.log(`Streamer name: ${streamerName}. Viewers: ${viewers}. Title: ${streamTitle}`);
+  $("#streamer-name").text(streamerName);
+  $("#stream-title").text(streamTitle);
+  $("#stream-viewers").text(`Total view count: ${viewers}`);
+}
+
+$("#nextStreamer").on("click", function () {
+  console.log("Next Streamer Clicked");
+});
+
+$("#previousStreamer").on("click", function () {
+  console.log("Previous Streamer Clicked");
+});
