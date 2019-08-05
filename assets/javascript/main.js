@@ -405,8 +405,8 @@ function buildFavs() {
     const favText = $("<div>");
     const unfavText = $("<p>");
 
-    favDiv.addClass("favDivsClick");
-    favDiv.attr("data-name", favsList[i]);
+    favText.addClass("favDivsClick");
+    favText.attr("data-name", favsList[i]);
 
     favText.text(`${favsList[i]}`);
 
@@ -506,15 +506,16 @@ document.addEventListener("DOMContentLoaded", function (func) {
     hearthstoneQuery(cardToSearch);
   });
 
-  $(".favDivsClick").on("click", function (e) {
-    let cardToSearch = $(this).attr("data-name");
-    hearthstoneQuery(cardToSearch);
-  });
-
   $("#favSidebarContainer").on("click", ".unfavorite-btn", function (e) {
+    console.log(e);
     console.log("clicked unfavorite");
     console.log($(this).attr("data-name"));
     unFavorite("", $(this).attr("data-name"));
+  });
+
+  $("#favSidebarContainer").on("click", ".favDivsClick", function (e) {
+    let cardToSearch = $(this).attr("data-name");
+    hearthstoneQuery(cardToSearch);
   });
 
   hearthstoneQuery("Chicken");
