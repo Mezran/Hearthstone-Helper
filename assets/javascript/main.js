@@ -380,10 +380,12 @@ $("#search-results").on("click", ".favorite", function () {
 });
 
 function unFavorite(x, y) {
-  x.attr("data-state", "unfavorited");
-  x.removeClass("favorited");
+  if (x) {
+    x.attr("data-state", "unfavorited");
+    x.removeClass("favorited");
+  }
 
-  // Remove the card from the favorites array
+  // Remove the card name from the favorites array
   for (var i = favsList.length - 1; i >= 0; i--) {
     if (favsList[i] === y) {
       favsList.splice(i, 1);
@@ -392,9 +394,6 @@ function unFavorite(x, y) {
   localStorage.setItem("favsList", JSON.stringify(favsList) || []);
   buildFavs();
 
-
-
-
 };
 
 
@@ -402,14 +401,36 @@ function buildFavs() {
   $("#favSidebarContainer").empty();
   favsList = JSON.parse(localStorage.getItem("favsList"));
   for (let i = 0; i < favsList.length; i++) {
-    let favDiv = document.createElement("button");
-    favDiv.className = "favDivs";
-    favDiv.innerHTML = favsList[i];
-    favDiv.value = favsList[i];
-    favDiv.setAttribute("id", favsList[i]);
+    const favDiv = $("<div>");
+    const favText = $("<div>");
+    const unfavText = $("<p>");
+
+    favDiv.addClass("favDivsClick");
+    favDiv.attr("data-name", favsList[i]);
+
+    favText.text(`${favsList[i]}`);
+
+    unfavText.text("Unfavorite");
+    unfavText.addClass("unfavorite-btn text-muted");
+    unfavText.attr("data-name", favsList[i]);
+
+    favDiv.append(favText, unfavText);
     $("#favSidebarContainer").prepend(favDiv);
-    let hr = document.createElement("hr");
-    favDiv.append(hr);
+
+    // let favDiv = document.createElement("button");
+    // favDiv.className = "favDivsClick";
+    // favDiv.innerHTML = favsList[i];
+    // favDiv.value = favsList[i];
+    // favDiv.setAttribute("data-name", favsList[i]);
+    // $("#favSidebarContainer").prepend(favDiv);
+
+    // let unfavoriteBtn =$("<p>");
+    // unfavoriteBtn.text("Unfavorite");
+    // unfavoriteBtn.addClass("btn");
+    // $("favDiv").prepend(unfavoriteBtn);
+
+    // let hr = document.createElement("hr");
+    // favDiv.append(hr);
   }
   if (favsList.length == 0) {
     console.log("Empty Favs!");
@@ -419,7 +440,6 @@ function buildFavs() {
 
 document.addEventListener("DOMContentLoaded", function (func) {
   const streamers = [];
-
 
   function hearthstoneQuery(card) {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
@@ -469,7 +489,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
       $("#glossarySidebar").toggleClass("open")
     }
   });
-  
+
   $("#favStar").on("click", function openSidebar() {
     if ($("#glossarySidebar").hasClass("open")) {
       $("#glossarySidebar").toggleClass("open");
@@ -486,9 +506,14 @@ document.addEventListener("DOMContentLoaded", function (func) {
     hearthstoneQuery(cardToSearch);
   });
 
-    $(".favDivs").on("click", function (e) {
-    let cardToSearch = $(this).val();
+  $(".favDivsClick").on("click", function (e) {
+    let cardToSearch = $(this).attr("data-name");
     hearthstoneQuery(cardToSearch);
+  });
+
+  $(".unfavorite-btn").on("click", function (e) {
+    console.log($(this).attr("data-name"));
+    unFavorite("", $(this).attr("data-name"));
   });
 
   hearthstoneQuery("Chicken");
@@ -500,7 +525,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
 // Load title's content 
 function loadTitle(data) {
   console.log("Load title function!");
-  const streamerName = data.data[0].user_name; 
+  const streamerName = data.data[0].user_name;
   const viewers = data.data[0].viewer_count;
   const streamTitle = data.data[0].title;
   console.log(`Streamer name: ${streamerName}. Viewers: ${viewers}. Title: ${streamTitle}`);
