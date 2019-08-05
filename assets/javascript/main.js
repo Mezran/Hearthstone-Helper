@@ -238,6 +238,7 @@ function showSearchArray(inp, arr) {
 
 function createCard(passedCard) {
   console.log("Sending");
+  const cardName = passedCard[0].name;
   //create all elements
   // main wrapper for the card
   let cardWrapper = document.createElement('div');
@@ -256,13 +257,20 @@ function createCard(passedCard) {
   // star i
   let cardFav = document.createElement('i');
   cardFav.setAttribute('class', 'fas fa-star fa-lg favorite');
-  cardFav.setAttribute('data-card-name', 'example card2');
-  cardFav.setAttribute('data-state', 'unfavorited');
+  cardFav.setAttribute('data-card-name', cardName);
+  // If the card is already in the favorites list,
+  console.log(favsList.includes(cardName));
+  if (favsList.includes(cardName)) {
+    cardFav.setAttribute('data-state', 'favorited');
+    cardFav.setAttribute('class', 'fas fa-star fa-lg favorite favorited');
+  } else { //Otherwise, it is unfavorited by default
+    cardFav.setAttribute('data-state', 'unfavorited');
+  }
 
   // create card title span
   let cardTitle = document.createElement('span');
   cardTitle.setAttribute('class', 'card-title');
-  cardTitle.innerHTML = passedCard[0].name;
+  cardTitle.innerHTML = cardName;
   //add hr
   let breakPt = document.createElement('hr');
   //card body
@@ -303,7 +311,7 @@ $("#search-results").on("click", ".favorite", function () {
   const cardName = card.attr("data-card-name");
   console.log(cardName + " " + favsList);
   if (favsList.indexOf(cardName) > -1) {
-    console.log("already favorited!");
+    console.log("already favorited! - unfavoriting");
     // RUN UNFAVORITE CODE
     unFavorite(card, cardName);
   } else {
