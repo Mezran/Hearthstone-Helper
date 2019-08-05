@@ -441,14 +441,8 @@ document.addEventListener("DOMContentLoaded", function(func) {
       })
       .then(response => response.json())
       .then(data => {
-<<<<<<< HEAD
-        console.log("twitch Query success");
-        console.log(data);
         loadTitle(data);
         data.data.forEach(function (user, i) {
-=======
-        data.data.forEach(function(user, i) {
->>>>>>> 27ae33aa45e08be889b55e713ae9af5d3e6bd263
           const channel = data.data[i].user_name;
           streamers.push(channel);
         });
