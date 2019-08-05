@@ -511,7 +511,8 @@ document.addEventListener("DOMContentLoaded", function (func) {
     hearthstoneQuery(cardToSearch);
   });
 
-  $(".unfavorite-btn").on("click", function (e) {
+  $("#favSidebarContainer").on("click", ".unfavorite-btn", function (e) {
+    console.log("clicked unfavorite");
     console.log($(this).attr("data-name"));
     unFavorite("", $(this).attr("data-name"));
   });
