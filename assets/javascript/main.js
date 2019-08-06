@@ -12,18 +12,21 @@ $(".dropdown-item").click(function () {
     $(this).val() === 'hero' ?
       typeOnly.hero :
       $(this).val() === 'heroPower' ?
-      typeOnly.heroPower :
-      $(this).val() === 'minion' ?
-      typeOnly.minion :
-      $(this).val() === 'spell' ?
-      typeOnly.spell :
-      typeOnly.weapon
+        typeOnly.heroPower :
+        $(this).val() === 'minion' ?
+          typeOnly.minion :
+          $(this).val() === 'spell' ?
+            typeOnly.spell :
+            typeOnly.weapon
 
-
-  
+  if (arraySelection === cardName) {
     autocomplete(document.getElementById("myInput"), (arraySelection));
-  
+  } else {
+    showSearchArray(document.getElementById("myInput"), (arraySelection));
+  }
 });
+  
+
 
 
 function autocomplete(inp, arr) {
@@ -137,6 +140,106 @@ function autocomplete(inp, arr) {
   });
 } // end auto complete
 
+function showSearchArray(inp, arr) {
+  /*the autocomplete function takes two arguments,
+  the text field element and an array of possible autocompleted values:*/
+  let currentFocus;
+  /*execute a function when someone writes in the text field:*/
+  inp.addEventListener("input", function (e) {
+    let firstNewDiv;
+    let secondNewDiv;
+    let i, val = this.value;
+    /*close any already open lists of autocompleted values*/
+    closeAllLists();
+    if (!val) {
+      return false;
+    }
+    currentFocus = -1;
+    /*create a DIV element that will contain the items (values):*/
+    firstNewDiv = document.createElement("div");
+    firstNewDiv.setAttribute("id", this.id + "autocomplete-list");
+    firstNewDiv.setAttribute("class", "autocomplete-items");
+    /*append the DIV element as a child of the autocomplete container:*/
+    this.parentNode.appendChild(firstNewDiv);
+    /*for each item in the array...*/
+    for (i = 0; i < arr.length; i++) {
+      /*check if the item starts with the same letters as the text field value:*/
+      /*create a DIV element for each matching element:*/
+      secondNewDiv = document.createElement("div");
+      /*make the matching letters bold:*/
+      secondNewDiv.innerHTML = arr[i];
+      /*insert a input field that will hold the current array item's value:*/
+      secondNewDiv.innerHTML += "<input type='hidden' value='" + arr[i] + "'>";
+      /*execute a function when someone clicks on the item value (DIV element):*/
+      secondNewDiv.addEventListener("click", function (e) {
+        /*insert the value for the autocomplete text field:*/
+        inp.value = this.getElementsByTagName("input")[0].value;
+        /*close the list of autocompleted values,
+        (or any other open lists of autocompleted values:*/
+        closeAllLists();
+      });
+      firstNewDiv.appendChild(secondNewDiv);
+    }
+  })
+  /*execute a function presses a key on the keyboard:*/
+  inp.addEventListener("keydown", function (e) {
+    var x = document.getElementById(this.id + "autocomplete-list");
+    if (x) x = x.getElementsByTagName("div");
+    if (e.keyCode == 40) {
+      /*If the arrow DOWN key is pressed,
+      increase the currentFocus variable:*/
+      currentFocus++;
+      /*and and make the current item more visible:*/
+      addActive(x);
+    } else if (e.keyCode == 38) { //up
+      /*If the arrow UP key is pressed,
+      decrease the currentFocus variable:*/
+      currentFocus--;
+      /*and and make the current item more visible:*/
+      addActive(x);
+    } else if (e.keyCode == 13) {
+      /*If the ENTER key is pressed, prevent the form from being submitted,*/
+      e.preventDefault();
+      if (currentFocus > -1) {
+        /*and simulate a click on the "active" item:*/
+        if (x) x[currentFocus].click();
+      }
+    }
+  });
+
+  function addActive(x) {
+    /*a function to classify an item as "active":*/
+    if (!x) return false;
+    /*start by removing the "active" class on all items:*/
+    removeActive(x);
+    if (currentFocus >= x.length) currentFocus = 0;
+    if (currentFocus < 0) currentFocus = (x.length - 1);
+    /*add class "autocomplete-active":*/
+    x[currentFocus].classList.add("autocomplete-active");
+  }
+
+  function removeActive(x) {
+    /*a function to remove the "active" class from all autocomplete items:*/
+    for (var i = 0; i < x.length; i++) {
+      x[i].classList.remove("autocomplete-active");
+    }
+  };
+
+  function closeAllLists(elmnt) {
+    /*close all autocomplete lists in the document,
+    except the one passed as an argument:*/
+    var x = document.getElementsByClassName("autocomplete-items");
+    for (var i = 0; i < x.length; i++) {
+      if (elmnt != x[i] && elmnt != inp) {
+        x[i].parentNode.removeChild(x[i]);
+      }
+    }
+  };
+  /*execute a function when someone clicks in the document:*/
+  document.addEventListener("click", function (e) {
+    closeAllLists(e.target);
+  });
+} // end function showSearchArray
 
 
 function createCard(passedCard) {
@@ -347,8 +450,8 @@ document.addEventListener("DOMContentLoaded", function (func) {
       .catch(error => console.log(error))
   }; // end hearthstoneQuery function
 
-  function twitchCall(index){
-    while(document.querySelector("#twitch-embed").firstChild){
+  function twitchCall(index) {
+    while (document.querySelector("#twitch-embed").firstChild) {
       document.querySelector("#twitch-embed").removeChild(document.querySelector("#twitch-embed").firstChild);
     }
     new Twitch.Embed("twitch-embed", {
@@ -357,9 +460,9 @@ document.addEventListener("DOMContentLoaded", function (func) {
       channel: streamers[index],
       theme: "dark"
     });
-    loadTitle (twitchInfo[index]);
+    loadTitle(twitchInfo[index]);
   }
-  document.querySelector("#nextStreamer").addEventListener("click", function(){
+  document.querySelector("#nextStreamer").addEventListener("click", function () {
     twitchCall(++streamIndex);
   })
 
@@ -380,7 +483,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
           streamers.push(channel);
         });
 
-      twitchCall(streamIndex);
+        twitchCall(streamIndex);
 
       })
       .catch(error => console.log(error))
@@ -415,8 +518,8 @@ document.addEventListener("DOMContentLoaded", function (func) {
 
   // on search button pressed
   document.querySelector("#searchButton").addEventListener("click", function (e) {
-      let cardToSearch = document.querySelector("#myInput").value;
-      hearthstoneQuery(cardToSearch);
+    let cardToSearch = document.querySelector("#myInput").value;
+    hearthstoneQuery(cardToSearch);
 
     $("#myInput").val("");
   });
