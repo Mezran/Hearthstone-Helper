@@ -218,7 +218,7 @@ const typeOnly = {
 "Zul'jin"
 ],
 
-heropower: [
+heroPower: [
 "A New Face",
 "Activate Arcanotron",
 "Activate Electron",
