@@ -252,8 +252,6 @@ function createCard(passedCard) {
   cardImage.setAttribute('src', passedCard[0].img);
   cardImage.setAttribute('onerror', "this.onerror=null;this.src='./assets/images/blank.png'")
   cardWrapper.appendChild(cardImage);
-  
-  
 
   //Remove card X
   let xBtn = $("<i class='xBtn fas fa-times'></i>");
@@ -408,7 +406,7 @@ function buildFavs() {
   $("#favSidebarContainer").empty();
   favsList = JSON.parse(localStorage.getItem("favsList")) || [];
   for (let i = 0; i < favsList.length; i++) {
-    const favDiv = $("<div class='mt-3'>");
+    const favDiv = $("<div class='favorite-item mt-2'>");
     const favText = $("<div class='favText'>");
     const unfavText = $("<p>");
 
@@ -477,19 +475,25 @@ document.addEventListener("DOMContentLoaded", function (func) {
   //Begin sidebar functionality
   $("#hamburger").on("click", function openSidebar() {
     if ($("#favSidebar").hasClass("open")) {
+      $("#favStar").removeClass("open-sidebar-style");
+      $("#hamburger").toggleClass("open-sidebar-style");
       $("#favSidebar").toggleClass("open");
-      $("#glossarySidebar").toggleClass("open")
+      $("#glossarySidebar").toggleClass("open");
     } else {
       $("#glossarySidebar").toggleClass("open")
+      $("#hamburger").toggleClass("open-sidebar-style");
     }
   });
 
   $("#favStar").on("click", function openSidebar() {
     if ($("#glossarySidebar").hasClass("open")) {
+      $("#hamburger").removeClass("open-sidebar-style");
+      $("#favStar").toggleClass("open-sidebar-style");
       $("#glossarySidebar").toggleClass("open");
       $("#favSidebar").toggleClass("open")
     } else {
       $("#favSidebar").toggleClass("open")
+      $("#favStar").toggleClass("open-sidebar-style");
     }
   });
 
