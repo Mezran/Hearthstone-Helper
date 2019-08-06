@@ -431,8 +431,9 @@ function buildFavs() {
 };
 
 document.addEventListener("DOMContentLoaded", function (func) {
+  let twitchInfo;
   const streamers = [];
-
+  let streamIndex = 0;
   function hearthstoneQuery(card) {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
       headers: {
@@ -446,6 +447,21 @@ document.addEventListener("DOMContentLoaded", function (func) {
       .catch(error => console.log(error))
   }; // end hearthstoneQuery function
 
+  function twitchCall(index){
+    while(document.querySelector("#twitch-embed").firstChild){
+      document.querySelector("#twitch-embed").removeChild(document.querySelector("#twitch-embed").firstChild);
+    }    
+    new Twitch.Embed("twitch-embed", {
+      width: `100%`,
+      height: `560`,
+      channel: streamers[index],
+      theme: "dark"
+    });
+    loadTitle (twitchInfo[index]);
+  }
+  document.querySelector("#nextStreamer").addEventListener("click", function(){
+    twitchCall(++streamIndex);
+  })
 
   function twitchQuery() {
     // hearthstoneID is the id from twitch.tv documentation.
@@ -457,17 +473,15 @@ document.addEventListener("DOMContentLoaded", function (func) {
     })
       .then(response => response.json())
       .then(data => {
+        twitchInfo = data.data;
         loadTitle(data);
         data.data.forEach(function (user, i) {
           const channel = data.data[i].user_name;
           streamers.push(channel);
         });
-        new Twitch.Embed("twitch-embed", {
-          width: `100%`,
-          height: `100%`,
-          channel: streamers[0],
-          theme: "dark"
-        });
+
+      twitchCall(streamIndex); 
+
       })
       .catch(error => console.log(error))
   }; // end TwitchQuery function
@@ -526,22 +540,14 @@ document.addEventListener("DOMContentLoaded", function (func) {
 // Load title's content 
 function loadTitle(data) {
   console.log("Load title function!");
-  const streamerName = data.data[0].user_name;
-  const viewers = data.data[0].viewer_count;
-  const streamTitle = data.data[0].title;
+  const streamerName = data.user_name;
+  const viewers = data.viewer_count;
+  const streamTitle = data.title;
   console.log(`Streamer name: ${streamerName}. Viewers: ${viewers}. Title: ${streamTitle}`);
   $("#streamer-name").text(streamerName);
   $("#stream-title").text(streamTitle);
   $("#stream-viewers").text(`Total view count: ${viewers}`);
 }
-
-$("#nextStreamer").on("click", function () {
-  console.log("Next Streamer Clicked");
-});
-
-$("#previousStreamer").on("click", function () {
-  console.log("Previous Streamer Clicked");
-});
 
 function unfavoriteAll() {
   favsList = [];
