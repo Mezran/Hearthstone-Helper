@@ -45,6 +45,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 /*auto-complete searchbar*/
 
+#dropdownMenu2 {
+    background: #f1f1f1;
+    border: none;
+}
+
+#searchButton {
+    background-color: #08A6FF;
+    border-radius: 0px 4px 4px 0;
+    padding: 10px 16px;
+}
+
+#myInput:focus {
+    outline: none;
+}
+
 .input-group {
     font: 16px Arial;
     box-sizing: border-box;
