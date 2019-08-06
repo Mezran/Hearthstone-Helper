@@ -493,6 +493,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
   document.querySelector("#searchButton").addEventListener("click", function (e) {
     let cardToSearch = document.querySelector("#myInput").value;
     hearthstoneQuery(cardToSearch);
+    $("#myInput").val("");
   });
 
   $("#favSidebarContainer").on("click", ".unfavorite-btn", function (e) {
