@@ -401,7 +401,7 @@ function buildFavs() {
   updateStars();
 
   $("#favSidebarContainer").empty();
-  favsList = JSON.parse(localStorage.getItem("favsList"));
+  favsList = JSON.parse(localStorage.getItem("favsList")) || [];
   for (let i = 0; i < favsList.length; i++) {
     const favDiv = $("<div class='mt-3'>");
     const favText = $("<div class='favText'>");
