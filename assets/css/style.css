@@ -20,8 +20,23 @@ h1, h2, h3, h4, h5, h6 {
 /* General content */
 
 .box {
-  background-color: #17172E;
-  border: 1px solid #50506B;
+    background-color: #17172E;
+    border: 1px solid #50506B;
+}
+
+.my-border-bottom {
+    background-color: #17172E;
+    border-bottom: 1px solid #50506B;
+}
+
+.my-border-right {
+    background-color: #17172E;
+    border-right: 1px solid #50506B;
+}
+
+.my-box-noborder {
+    background-color: #17172E;
+    border: none;
 }
 
 /* Navbar */
@@ -187,7 +202,7 @@ input[type=submit] {
 
 .scrollbar::-webkit-scrollbar-track {
     background: #070720;
-    border-left: 1px solid #50506B;
+    border: 1px solid #50506B;
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
