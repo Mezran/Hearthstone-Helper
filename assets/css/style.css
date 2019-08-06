@@ -455,6 +455,51 @@ input[type=submit] {
     border-bottom: 1px solid #08A6FF;
 }
 
+/*card type pop up*/
+
+.popup-overlay {
+    visibility:hidden;
+    }
+    
+.popup-content {
+   visibility:hidden;
+    }
+
+.popup-overlay.active{
+   visibility:visible;
+   color: whitesmoke;
+    }
+        
+.popup-content.active {
+    visibility: visible;
+    float: right;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    color: #D8D8D8;
+    font-size: 14px;
+    overflow: auto;
+    word-wrap: break-word;
+    z-index: 10;
+    }
+
+.card-buttons {
+    margin: 4px;
+    background-color: #070720;
+    color: #fff;
+    border: none;
+
+
+
+
+}
+
+.close {
+color: #fff;
+
+}    
+
 @media screen and (max-width: 843px) {
     #twitch-container {
         height: 800px;
