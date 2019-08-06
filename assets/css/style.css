@@ -314,7 +314,6 @@ input[type=submit] {
     overflow: auto;
     position: relative;
     margin: 20px auto;
-    border-radius: 6px;
 }
 
 .myCard .card-content, .myCard .card-image {
