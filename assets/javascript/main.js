@@ -245,11 +245,17 @@ function createCard(passedCard) {
   // main wrapper for the card
   let cardWrapper = document.createElement('div');
   cardWrapper.setAttribute('class', 'myCard box');
+
   //card image
   let cardImage = document.createElement('img');
   cardImage.setAttribute('class', 'card-image');
   cardImage.setAttribute('src', passedCard[0].img);
+  cardImage.setAttribute('onerror', "this.onerror=null;this.src='./assets/images/blank.png'")
   cardWrapper.appendChild(cardImage);
+
+  //Remove card X
+  let xBtn = $("<i class='xBtn fas fa-times'></i>");
+  $(cardWrapper).prepend(xBtn);
 
   //content wrapper
   let cardContent = document.createElement('div');
@@ -344,10 +350,7 @@ function createCard(passedCard) {
   // append wrapper to card location
   document.querySelector("#search-results").prepend(cardWrapper);
 
-
-
 } // end function createCard
-
 
 // create favorites bar inital list on load
 buildFavs();
@@ -401,9 +404,9 @@ function buildFavs() {
   updateStars();
 
   $("#favSidebarContainer").empty();
-  favsList = JSON.parse(localStorage.getItem("favsList"));
+  favsList = JSON.parse(localStorage.getItem("favsList")) || [];
   for (let i = 0; i < favsList.length; i++) {
-    const favDiv = $("<div class='mt-3'>");
+    const favDiv = $("<div class='favorite-item mt-2'>");
     const favText = $("<div class='favText'>");
     const unfavText = $("<p>");
 
@@ -461,7 +464,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
         });
         new Twitch.Embed("twitch-embed", {
           width: `100%`,
-          height: `560`,
+          height: `100%`,
           channel: streamers[0],
           theme: "dark"
         });
@@ -472,19 +475,25 @@ document.addEventListener("DOMContentLoaded", function (func) {
   //Begin sidebar functionality
   $("#hamburger").on("click", function openSidebar() {
     if ($("#favSidebar").hasClass("open")) {
+      $("#favStar").removeClass("open-sidebar-style");
+      $("#hamburger").toggleClass("open-sidebar-style");
       $("#favSidebar").toggleClass("open");
-      $("#glossarySidebar").toggleClass("open")
+      $("#glossarySidebar").toggleClass("open");
     } else {
       $("#glossarySidebar").toggleClass("open")
+      $("#hamburger").toggleClass("open-sidebar-style");
     }
   });
 
   $("#favStar").on("click", function openSidebar() {
     if ($("#glossarySidebar").hasClass("open")) {
+      $("#hamburger").removeClass("open-sidebar-style");
+      $("#favStar").toggleClass("open-sidebar-style");
       $("#glossarySidebar").toggleClass("open");
       $("#favSidebar").toggleClass("open")
     } else {
       $("#favSidebar").toggleClass("open")
+      $("#favStar").toggleClass("open-sidebar-style");
     }
   });
 
@@ -515,21 +524,17 @@ document.addEventListener("DOMContentLoaded", function (func) {
         console.log("ButtonClick");
         let cardToSearch = $(this).val();
         hearthstoneQuery(cardToSearch);
-  
-
       });
-
-
-
 
       $(".close, .popup").on("click", function () {
         $(".popup, .popup-content").removeClass("active");
       });
 
-    } else {
-      console.log("card-Class");
-    }
+    } 
 
+    let cardToSearch = document.querySelector("#myInput").value;
+    hearthstoneQuery(cardToSearch);
+    $("#myInput").val("");
   });
 
   $("#favSidebarContainer").on("click", ".unfavorite-btn", function (e) {
@@ -592,4 +597,10 @@ function updateStars() {
 
 $("#unfavoriteBtn").on("click", function () {
   unfavoriteAll();
+});
+
+$("#search-results").on("click", ".xBtn", function () {
+  console.log("x pressed");
+  console.log($(this));
+  $(this).closest(".myCard").remove();
 });

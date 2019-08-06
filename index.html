@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Hearthstone Helper</title>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,600,900|Nunito:400,800|Blinker&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -26,11 +26,13 @@
 <body>
 
     <!-- Auto-fill search box from W3 Schools combined with bootstrap dropdown input-->
-    <nav class="navbar box">
-        <form autocomplete="off" class="mx-auto">
+
+    <nav class="navbar my-border-bottom"">
+        <form autocomplete="off" id="mainSearch" class="mx-auto">
+
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenu2"
+                    <button class="btn btn-light dropdown-toggle" type="button" id="dropdownMenu2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Card Name</button>
                     <div class="dropdown-menu">
                         <button class="dropdown-item" type="button" id="cardName" value="cardName">Card Name</button>
@@ -38,7 +40,7 @@
                     </div>
                     <div class="autocomplete">
                         <input class="autocomplete" id="myInput" type="text" name="cardSearch"
-                            placeholder="e.g. Crackling Doom">
+                            placeholder="e.g. Excess Mana">
                     </div>
                     <input id="searchButton" type="button" value="Search">
                 </div>
@@ -48,13 +50,14 @@
         </form>
     </nav>
 
-
-    <div id="sidebar" class="sidebar box">
-        <img src="./assets/images/hamburger.svg" alt="open menu" class="sidebarImg" id="hamburger">
-        <img src="./assets/images/star.svg" alt="open menu" class="sidebarImg" id="favStar">
+    <div id="sidebar" class="sidebar my-border-right">
+        <!-- <img src="./assets/images/hamburger.svg" alt="open menu" class="sidebarImg" id="hamburger">
+        <img src="./assets/images/star.svg" alt="open menu" class="sidebarImg" id="favStar"> -->
+        <i class="sidebarImg fas fa-bars" id="hamburger"></i>
+        <i class="sidebarImg fas fa-star" id="favStar"></i>
     </div>
 
-    <div id="glossarySidebar" class="sidebar-content box">
+    <div id="glossarySidebar" class="sidebar-content my-box-noborder scrollbar">
         <div>
             <h1 id="glossary-top">Glossary</h1>
             <div class="quick-links-container">
@@ -498,8 +501,8 @@
 
     </div>
 
-    <div id="favSidebar" class="sidebar-content box">
-        <div id="favSidebarContainer"></div>
+    <div id="favSidebar" class="sidebar-content my-border-right">
+        <div id="favSidebarContainer" class="scrollbar"></div>
         <div id="unfavoriteAll">
             <button class="btn btn-outline-dark" id="unfavoriteBtn">Unfavorite All</button>
         </div>
@@ -511,7 +514,7 @@
             <div class="p-3">
                 <h2 id="streamer-name">Loading...</h2>
             </div>
-            <div>
+            <div class="p-3">
                 <div id="stream-title">
 
                 </div>
@@ -519,13 +522,13 @@
 
                 </div>
             </div>
-            <div id="title-buttons">
+            <div id="title-buttons" class="p-3">
                 <button class="btn btn-outline-primary" id="nextStreamer">Next Streamer</button>
                 <button class="btn btn-outline-light" id="previousStreamer">Previous Streamer</button>
             </div>
         </div>
 
-        <div id="twitch-embed" class="box"></div>
+        <div id="twitch-container" class="box"><div id="twitch-embed"></div></div>
 
         <div id="search-results">
             <!-- <div class="myCard box"> //We can delete this? or keep for reference
