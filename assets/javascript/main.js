@@ -291,17 +291,14 @@ function createCard(passedCard) {
 
   //text
   if (passedCard[0].text !== undefined) {
-    console.log("adding text");
-    console.log(passedCard[0])
     let cardParagraph = document.createElement('p');
     let cardText = passedCard[0].text.split('\\n').join(' ');
-    console.log('****', cardText);
-    cardParagraph.innerHTML = cardText;
+    cardText = cardText.split('$').join('');
+        cardParagraph.innerHTML = cardText;
     cardBodyWrapper.appendChild(cardParagraph);
   }
   //Flavor
   if (passedCard[0].flavor !== undefined) {
-    console.log("adding Flavor");
     let cardFlavor = document.createElement('div');
     cardFlavor.setAttribute('class', 'flavor-text');
     cardFlavor.innerHTML = passedCard[0].flavor;
@@ -309,7 +306,6 @@ function createCard(passedCard) {
   }
   //cost
   if (passedCard[0].cost !== undefined) {
-    console.log("adding card cost");
     let cardCost = document.createElement('span');
     cardCost.setAttribute('class', 'card-stat');
     cardCost.innerHTML = 'Cost: ' + passedCard[0].cost;
@@ -317,7 +313,6 @@ function createCard(passedCard) {
   }
   //attack
   if (passedCard[0].attack !== undefined) {
-    console.log("adding Attack");
     let cardAtk = document.createElement('span');
     cardAtk.setAttribute('class', 'card-stat');
     cardAtk.innerHTML = 'Attack: ' + passedCard[0].attack;
@@ -326,7 +321,6 @@ function createCard(passedCard) {
 
   //health
   if (passedCard[0].health !== undefined) {
-    console.log("adding health");
     let cardHealth = document.createElement('span');
     cardHealth.setAttribute('class', 'card-stat');
     cardHealth.innerHTML = 'Health: ' + passedCard[0].health;
@@ -334,7 +328,6 @@ function createCard(passedCard) {
   }
   //health
   if (passedCard[0].durability !== undefined) {
-    console.log("adding durability");
     let cardDur = document.createElement('span');
     cardDur.setAttribute('class', 'card-stat');
     cardDur.innerHTML = 'Durability: ' + passedCard[0].durability;
@@ -514,7 +507,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
 
 }); // end DOM content loaded;
 
-// Load title's content 
+// Load title's content
 function loadTitle(data) {
   console.log("Load title function!");
   const streamerName = data.data[0].user_name;
