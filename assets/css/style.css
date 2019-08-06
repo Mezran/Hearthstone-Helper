@@ -315,6 +315,15 @@ input[type=submit] {
     margin-right: 24px;
 }
 
+.xBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #A1A1A1;
+    font-size: 1.4em;
+    cursor: pointer;
+}
+
 /* Glossary */
 
 #glossarySidebar {
