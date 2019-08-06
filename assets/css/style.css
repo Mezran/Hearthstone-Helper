@@ -60,8 +60,32 @@ h1, h2, h3, h4, h5, h6 {
 }
 /*auto-complete searchbar*/
 
+
 #dropdownMenu2 {
     background: #f1f1f1;
+}
+.input-group {
+    font: 16px Arial;
+    box-sizing: border-box;
+}
+
+.searchbar {
+    width: 650px;
+    height: 54px;
+    margin: 40px auto;
+    background-color: #FEFEFE;
+    border-radius: 27px;
+    overflow: hidden;
+}
+
+.searchbar input, .searchbar .search-icon {
+    display: inline-block;
+}
+
+.searchbar input {
+    width: 596px;
+    height: 100%;
+    padding: 20px 2px;
     border: none;
 }
 
@@ -178,7 +202,7 @@ input[type=submit] {
 
 .scrollbar::-webkit-scrollbar-thumb {
     background: #08A6FF;
-} 
+}
 
 .sidebar-content.open {
     left: 80px;
@@ -235,11 +259,19 @@ input[type=submit] {
 
 /* Twitch portal */
 
-#twitch-embed {
+#twitch-container {
+    position: relative;
     width: 100%;
-    padding: 12px;
-    text-align: center;
-    overflow: hidden;
+    padding: 19.66%; /*This will make the height of the box a percentage of the width.*/
+}
+
+#twitch-embed {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* padding: 12px; */
+    top: 0;
+    left: 0;
 }
 
 /* favorites bar */
@@ -247,7 +279,7 @@ input[type=submit] {
 #favSidebar {
     display: flex;
     flex-direction: column;
-} 
+}
 
 #favSidebarContainer {
     flex-basis: 100%;
@@ -291,11 +323,11 @@ input[type=submit] {
     margin: 20px auto;
 }
 
-.myCard .card-content, .myCard .card-image {
+.card-content, .card-image {
     float: left;
 }
 
-.myCard .card-image {
+.card-image {
     width: 30%;
     height: auto;
     padding: 0 20px 20px;
@@ -303,7 +335,7 @@ input[type=submit] {
     display: inline-block;
 }
 
-.myCard .card-content {
+.card-content {
     width: 70%;
     height: auto;
     display: inline-block;
@@ -420,4 +452,62 @@ input[type=submit] {
 .quick-links:hover {
     text-decoration: none;
     border-bottom: 1px solid #08A6FF;
+}
+
+@media screen and (max-width: 843px) {
+    #twitch-container {
+        height: 800px;
+        padding: 0;
+        position: static;
+    }
+
+    #twitch-embed {
+        position: static;
+    }
+
+    .myCard {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .card-image {
+        width: 176px;
+        height: 235px;
+        float: none;
+        flex-grow: 1;
+    }
+
+    .card-content {
+        position: static;
+        top: 0;
+        transform: translateY(0);
+        float: none;
+        width: 100%;
+        flex-grow: 2;
+    }
+
+    #mainSearch {
+        width: 80%;
+    }
+
+    .autocomplete {
+        width: 340px;
+    }
+
+    .input-group {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 664px) {
+    .autocomplete {
+        width: 200px;
+    }
+    .navbar {
+        overflow: scroll;
+    }
 }

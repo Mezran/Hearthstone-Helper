@@ -464,7 +464,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
         });
         new Twitch.Embed("twitch-embed", {
           width: `100%`,
-          height: `560`,
+          height: `100%`,
           channel: streamers[0],
           theme: "dark"
         });
