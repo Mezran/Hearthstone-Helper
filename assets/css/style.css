@@ -69,6 +69,7 @@ h1, h2, h3, h4, h5, h6 {
     background-color: #08A6FF;
     border-radius: 0px 4px 4px 0;
     padding: 10px 16px;
+    color: #f1f1f1;
 }
 
 #myInput:focus {
@@ -78,41 +79,6 @@ h1, h2, h3, h4, h5, h6 {
 .input-group {
     font: 16px Arial;
     box-sizing: border-box;
-}
-.searchbar {
-    width: 650px;
-    height: 54px;
-    margin: 40px auto;
-    background-color: #FEFEFE;
-    border-radius: 27px;
-    overflow: hidden;
-}
-
-.searchbar input, .searchbar .search-icon {
-    display: inline-block;
-}
-
-.searchbar input {
-    width: 596px;
-    height: 100%;
-    padding: 20px 2px;
-    border: none;
-    color: #070720;
-}
-
-.searchbar input:focus {
-    outline: none;
-}
-
-.searchbar .search-icon {
-    width: 54px;
-    height: 54px;
-    vertical-align: bottom;
-}
-
-.searchbar img {
-    width: 30%;
-    margin: 35%;
 }
 
 .autocomplete {
