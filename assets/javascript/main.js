@@ -380,10 +380,12 @@ $("#search-results").on("click", ".favorite", function () {
 });
 
 function unFavorite(x, y) {
-  x.attr("data-state", "unfavorited");
-  x.removeClass("favorited");
+  if (x) {
+    x.attr("data-state", "unfavorited");
+    x.removeClass("favorited");
+  }
 
-  // Remove the card from the favorites array
+  // Remove the card name from the favorites array
   for (var i = favsList.length - 1; i >= 0; i--) {
     if (favsList[i] === y) {
       favsList.splice(i, 1);
@@ -392,33 +394,41 @@ function unFavorite(x, y) {
   localStorage.setItem("favsList", JSON.stringify(favsList) || []);
   buildFavs();
 
-
-
-
 };
 
 
 function buildFavs() {
-  $("#favSidebar").empty();
+  updateStars();
+
+  $("#favSidebarContainer").empty();
   favsList = JSON.parse(localStorage.getItem("favsList"));
   for (let i = 0; i < favsList.length; i++) {
-    let favDiv = document.createElement("button");
-    favDiv.className = "favDivs";
-    favDiv.innerHTML = favsList[i];
-    favDiv.value = favsList[i];
-    favDiv.setAttribute("id", favsList[i]);
-    $("#favSidebar").prepend(favDiv);
-    let hr = document.createElement("hr");
-    favDiv.append(hr);
-    
+    const favDiv = $("<div class='mt-3'>");
+    const favText = $("<div class='favText'>");
+    const unfavText = $("<p>");
 
+    favText.addClass("favDivsClick");
+    favText.attr("data-name", favsList[i]);
+    favText.css("cursor", "pointer");
+    favText.text(`${favsList[i]}`);
 
+    unfavText.text("Unfavorite");
+    unfavText.addClass("unfavorite-btn quick-links");
+    unfavText.attr("data-name", favsList[i]);
+    unfavText.css("cursor", "pointer");
+
+    favDiv.append(favText, unfavText);
+    $("#favSidebarContainer").prepend(favDiv);
+  }
+
+  if (favsList.length == 0) {
+    console.log("Empty Favs!");
+    $("#favSidebarContainer").append("<p class='text-muted text-center m-3' style='font-size: 14px;'>No favorites yet. <br> Add favorites from your searches to save them here.</p>");
   }
 };
 
 document.addEventListener("DOMContentLoaded", function (func) {
   const streamers = [];
-
 
   function hearthstoneQuery(card) {
     fetch("https://omgvamp-hearthstone-v1.p.rapidapi.com/cards/" + card, {
@@ -468,7 +478,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
       $("#glossarySidebar").toggleClass("open")
     }
   });
-  
+
   $("#favStar").on("click", function openSidebar() {
     if ($("#glossarySidebar").hasClass("open")) {
       $("#glossarySidebar").toggleClass("open");
@@ -485,8 +495,15 @@ document.addEventListener("DOMContentLoaded", function (func) {
     hearthstoneQuery(cardToSearch);
   });
 
-    $(".favDivs").on("click", function (e) {
-    let cardToSearch = $(this).val();
+  $("#favSidebarContainer").on("click", ".unfavorite-btn", function (e) {
+    console.log(e);
+    console.log("clicked unfavorite");
+    console.log($(this).attr("data-name"));
+    unFavorite("", $(this).attr("data-name"));
+  });
+
+  $("#favSidebarContainer").on("click", ".favDivsClick", function (e) {
+    let cardToSearch = $(this).attr("data-name");
     hearthstoneQuery(cardToSearch);
   });
 
@@ -499,7 +516,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
 // Load title's content 
 function loadTitle(data) {
   console.log("Load title function!");
-  const streamerName = data.data[0].user_name; 
+  const streamerName = data.data[0].user_name;
   const viewers = data.data[0].viewer_count;
   const streamTitle = data.data[0].title;
   console.log(`Streamer name: ${streamerName}. Viewers: ${viewers}. Title: ${streamTitle}`);
@@ -514,4 +531,28 @@ $("#nextStreamer").on("click", function () {
 
 $("#previousStreamer").on("click", function () {
   console.log("Previous Streamer Clicked");
+});
+
+function unfavoriteAll() {
+  favsList = [];
+  localStorage.setItem("favsList", JSON.stringify(favsList) || []);
+  buildFavs();
+}
+
+function updateStars() {
+  console.log("Updating stars in dom");
+  const stars = $(".favorite").toArray();
+  console.log(stars);
+  for (let i = 0; i < stars.length; i ++ ) {
+    console.log($(stars[i]).attr("data-state"));
+    if ($(stars[i]).attr("data-state") === "favorited" && !favsList.includes( $(stars[i]).attr("data-card-name") ) ) {
+      console.log("Match!");
+      $(stars[i]).attr("data-state", "unfavorited");
+      $(stars[i]).removeClass("favorited");
+    }
+  }
+}
+
+$("#unfavoriteBtn").on("click", function () {
+  unfavoriteAll();
 });

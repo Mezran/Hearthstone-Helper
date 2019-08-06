@@ -157,6 +157,7 @@ input[type=submit] {
     width: 280px;
     transition: left ease-in-out 300ms;
     color: whitesmoke;
+    padding: 12px;
 }
 
 .sidebar-content.open {
@@ -219,19 +220,29 @@ input[type=submit] {
 
 /* favorites bar */
 
-.favDivs {
-color: whitesmoke;
-background-color: #17172E;
-
-margin: 10px;
-padding: 10px;
-border: none;
-display: block;
-
+#favSidebar {
+    display: flex;
+    flex-direction: column;
 }
 
+#favSidebarContainer {
+    flex-basis: 100%;
+    overflow: auto;
+}
 
+#unfavoriteAll {
+    text-align: center;
+    padding: 32px 10px;
+}
 
+.favText {
+    font-size: 1.3em;
+    font-weight: bold;
+    max-width: 254px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /* Cards styling */
 
@@ -311,7 +322,6 @@ display: block;
     font-size: 14px;
     overflow: auto;
     word-wrap: break-word;
-    padding: 10px;
     z-index: 10;
 }
 
@@ -339,7 +349,7 @@ display: block;
     flex-flow: column wrap;
 }
 
-.glossary-quick-links {
+.quick-links {
     color: #08A6FF;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(0,0,0,0);
@@ -349,7 +359,7 @@ display: block;
     display: block;
 }
 
-.glossary-quick-links:hover {
+.quick-links:hover {
     text-decoration: none;
     border-bottom: 1px solid #08A6FF;
 }
