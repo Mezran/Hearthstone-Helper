@@ -255,6 +255,10 @@ function createCard(passedCard) {
   
   
 
+  //Remove card X
+  let xBtn = $("<i class='xBtn fas fa-times'></i>");
+  $(cardWrapper).prepend(xBtn);
+
   //content wrapper
   let cardContent = document.createElement('div');
   cardContent.setAttribute('class', 'card-content');
@@ -557,4 +561,10 @@ function updateStars() {
 
 $("#unfavoriteBtn").on("click", function () {
   unfavoriteAll();
+});
+
+$("#search-results").on("click", ".xBtn", function () {
+  console.log("x pressed");
+  console.log($(this));
+  $(this).closest(".myCard").remove();
 });
