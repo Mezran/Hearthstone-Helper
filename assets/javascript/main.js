@@ -245,11 +245,15 @@ function createCard(passedCard) {
   // main wrapper for the card
   let cardWrapper = document.createElement('div');
   cardWrapper.setAttribute('class', 'myCard box');
+
   //card image
   let cardImage = document.createElement('img');
   cardImage.setAttribute('class', 'card-image');
   cardImage.setAttribute('src', passedCard[0].img);
+  cardImage.setAttribute('onerror', "this.onerror=null;this.src='./assets/images/blank.png'")
   cardWrapper.appendChild(cardImage);
+  
+  
 
   //Remove card X
   let xBtn = $("<i class='xBtn fas fa-times'></i>");
@@ -348,10 +352,7 @@ function createCard(passedCard) {
   // append wrapper to card location
   document.querySelector("#search-results").prepend(cardWrapper);
 
-
-
 } // end function createCard
-
 
 // create favorites bar inital list on load
 buildFavs();
@@ -548,9 +549,9 @@ function updateStars() {
   console.log("Updating stars in dom");
   const stars = $(".favorite").toArray();
   console.log(stars);
-  for (let i = 0; i < stars.length; i ++ ) {
+  for (let i = 0; i < stars.length; i++) {
     console.log($(stars[i]).attr("data-state"));
-    if ($(stars[i]).attr("data-state") === "favorited" && !favsList.includes( $(stars[i]).attr("data-card-name") ) ) {
+    if ($(stars[i]).attr("data-state") === "favorited" && !favsList.includes($(stars[i]).attr("data-card-name"))) {
       console.log("Match!");
       $(stars[i]).attr("data-state", "unfavorited");
       $(stars[i]).removeClass("favorited");
