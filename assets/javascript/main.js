@@ -450,10 +450,10 @@ document.addEventListener("DOMContentLoaded", function (func) {
   function twitchCall(index){
     while(document.querySelector("#twitch-embed").firstChild){
       document.querySelector("#twitch-embed").removeChild(document.querySelector("#twitch-embed").firstChild);
-    }    
+    }
     new Twitch.Embed("twitch-embed", {
       width: `100%`,
-      height: `560`,
+      height: `100%`,
       channel: streamers[index],
       theme: "dark"
     });
@@ -480,7 +480,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
           streamers.push(channel);
         });
 
-      twitchCall(streamIndex); 
+      twitchCall(streamIndex);
 
       })
       .catch(error => console.log(error))
@@ -537,7 +537,7 @@ document.addEventListener("DOMContentLoaded", function (func) {
 
 }); // end DOM content loaded;
 
-// Load title's content 
+// Load title's content
 function loadTitle(data) {
   console.log("Load title function!");
   const streamerName = data.user_name;
