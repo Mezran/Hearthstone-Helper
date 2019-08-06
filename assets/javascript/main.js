@@ -475,19 +475,25 @@ document.addEventListener("DOMContentLoaded", function (func) {
   //Begin sidebar functionality
   $("#hamburger").on("click", function openSidebar() {
     if ($("#favSidebar").hasClass("open")) {
+      $("#favStar").removeClass("open-sidebar-style");
+      $("#hamburger").toggleClass("open-sidebar-style");
       $("#favSidebar").toggleClass("open");
-      $("#glossarySidebar").toggleClass("open")
+      $("#glossarySidebar").toggleClass("open");
     } else {
       $("#glossarySidebar").toggleClass("open")
+      $("#hamburger").toggleClass("open-sidebar-style");
     }
   });
 
   $("#favStar").on("click", function openSidebar() {
     if ($("#glossarySidebar").hasClass("open")) {
+      $("#hamburger").removeClass("open-sidebar-style");
+      $("#favStar").toggleClass("open-sidebar-style");
       $("#glossarySidebar").toggleClass("open");
       $("#favSidebar").toggleClass("open")
     } else {
       $("#favSidebar").toggleClass("open")
+      $("#favStar").toggleClass("open-sidebar-style");
     }
   });
 

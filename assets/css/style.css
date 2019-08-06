@@ -196,6 +196,11 @@ input[type=submit] {
     padding: 12px;
 }
 
+.sidebarImg {
+    font-size: 1.4em;
+    text-align: center;
+}
+
 .scrollbar::-webkit-scrollbar {
     width: 10px;
 }
@@ -211,6 +216,10 @@ input[type=submit] {
 
 .sidebar-content.open {
     left: 80px;
+}
+
+.open-sidebar-style {
+    color: #08A6FF;
 }
 
 /* main container  */
