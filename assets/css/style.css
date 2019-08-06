@@ -160,6 +160,19 @@ input[type=submit] {
     padding: 12px;
 }
 
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: #070720;
+    border-left: 1px solid #50506B;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background: #08A6FF;
+} 
+
 .sidebar-content.open {
     left: 80px;
 }
@@ -223,11 +236,13 @@ input[type=submit] {
 #favSidebar {
     display: flex;
     flex-direction: column;
-}
+} 
 
 #favSidebarContainer {
     flex-basis: 100%;
     overflow: auto;
+    margin-right: -12px;
+    margin-top: -12px;
 }
 
 #unfavoriteAll {
