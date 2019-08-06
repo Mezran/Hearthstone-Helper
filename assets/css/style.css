@@ -1,6 +1,7 @@
 /* General styling  */
 * {
     box-sizing: border-box;
+    font-family: 'Blinker', Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -11,11 +12,31 @@ hr {
     border-color: rgba(255, 255, 255, 0.2)
 }
 
-/* General */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', Arial, Helvetica, sans-serif;
+    font-weight: 800;
+}
+
+/* General content */
 
 .box {
-  background-color: #17172E;
-  border: 1px solid #50506B;
+    background-color: #17172E;
+    border: 1px solid #50506B;
+}
+
+.my-border-bottom {
+    background-color: #17172E;
+    border-bottom: 1px solid #50506B;
+}
+
+.my-border-right {
+    background-color: #17172E;
+    border-right: 1px solid #50506B;
+}
+
+.my-box-noborder {
+    background-color: #17172E;
+    border: none;
 }
 
 /* Navbar */
@@ -39,10 +60,12 @@ hr {
 }
 /*auto-complete searchbar*/
 
+
 .input-group {
     font: 16px Arial;
     box-sizing: border-box;
 }
+
 .searchbar {
     width: 650px;
     height: 54px;
@@ -60,23 +83,27 @@ hr {
     width: 596px;
     height: 100%;
     padding: 20px 2px;
-    border: none;
-    color: #070720;
 }
 
-.searchbar input:focus {
+#dropdownMenu2 {
+    background: #f1f1f1;
+    border: none;
+}
+
+#searchButton {
+    background-color: #08A6FF;
+    border-radius: 0px 4px 4px 0;
+    padding: 10px 16px;
+    color: #f1f1f1;
+}
+
+#myInput:focus {
     outline: none;
 }
 
-.searchbar .search-icon {
-    width: 54px;
-    height: 54px;
-    vertical-align: bottom;
-}
-
-.searchbar img {
-    width: 30%;
-    margin: 35%;
+.input-group {
+    font: 16px Arial;
+    box-sizing: border-box;
 }
 
 .autocomplete {
@@ -160,8 +187,30 @@ input[type=submit] {
     padding: 12px;
 }
 
+.sidebarImg {
+    font-size: 1.4em;
+    text-align: center;
+}
+
+.scrollbar::-webkit-scrollbar {
+    width: 10px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: #070720;
+    border: 1px solid #50506B;
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background: #08A6FF;
+} 
+
 .sidebar-content.open {
     left: 80px;
+}
+
+.open-sidebar-style {
+    color: #08A6FF;
 }
 
 /* main container  */
@@ -211,11 +260,19 @@ input[type=submit] {
 
 /* Twitch portal */
 
-#twitch-embed {
+#twitch-container {
+    position: relative;
     width: 100%;
-    padding: 12px;
-    text-align: center;
-    overflow: hidden;
+    padding: 19.66%; /*This will make the height of the box a percentage of the width.*/
+}
+
+#twitch-embed {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* padding: 12px; */
+    top: 0;
+    left: 0;
 }
 
 /* favorites bar */
@@ -223,11 +280,13 @@ input[type=submit] {
 #favSidebar {
     display: flex;
     flex-direction: column;
-}
+} 
 
 #favSidebarContainer {
     flex-basis: 100%;
     overflow: auto;
+    margin-right: -12px;
+    margin-top: -12px;
 }
 
 #unfavoriteAll {
@@ -244,6 +303,15 @@ input[type=submit] {
     text-overflow: ellipsis;
 }
 
+.favorite-item {
+    padding-bottom: 6px;
+    border-bottom: 1px solid #222238;
+}
+
+.favorite-item:last-child {
+    border-bottom: none;
+}
+
 /* Cards styling */
 
 .myCard {
@@ -254,14 +322,13 @@ input[type=submit] {
     overflow: auto;
     position: relative;
     margin: 20px auto;
-    border-radius: 6px;
 }
 
-.myCard .card-content, .myCard .card-image {
+.card-content, .card-image {
     float: left;
 }
 
-.myCard .card-image {
+.card-image {
     width: 30%;
     height: auto;
     padding: 0 20px 20px;
@@ -269,7 +336,7 @@ input[type=submit] {
     display: inline-block;
 }
 
-.myCard .card-content {
+.card-content {
     width: 70%;
     height: auto;
     display: inline-block;
@@ -282,8 +349,17 @@ input[type=submit] {
 .favorite {
     vertical-align: middle;
     padding-right: 8px;
+    cursor: pointer;
 }
 
+.favorite[data-state="unfavorited"] {
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
+}
+
+.favorite:hover {
+    opacity: 1;
+}
 
 .favorited {
     color: #FF9B00;
@@ -313,6 +389,21 @@ input[type=submit] {
 
 .card-stat {
     margin-right: 24px;
+}
+
+.xBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #A1A1A1;
+    font-size: 1.4em;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
+}
+
+.xBtn:hover {
+    opacity: 1;
 }
 
 /* Glossary */
@@ -362,4 +453,62 @@ input[type=submit] {
 .quick-links:hover {
     text-decoration: none;
     border-bottom: 1px solid #08A6FF;
+}
+
+@media screen and (max-width: 843px) {
+    #twitch-container {
+        height: 800px;
+        padding: 0;
+        position: static;
+    }
+
+    #twitch-embed {
+        position: static;
+    }
+
+    .myCard {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .card-image {
+        width: 176px;
+        height: 235px;
+        float: none;
+        flex-grow: 1;
+    }
+
+    .card-content {
+        position: static;
+        top: 0;
+        transform: translateY(0);
+        float: none;
+        width: 100%;
+        flex-grow: 2;
+    }
+
+    #mainSearch {
+        width: 80%;
+    }
+
+    .autocomplete {
+        width: 340px;
+    }
+
+    .input-group {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 664px) {
+    .autocomplete {
+        width: 200px;
+    }
+    .navbar {
+        overflow: scroll;
+    }
 }
