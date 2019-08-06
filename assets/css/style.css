@@ -1,6 +1,7 @@
 /* General styling  */
 * {
     box-sizing: border-box;
+    font-family: 'Blinker', Arial, Helvetica, sans-serif;
 }
 
 body {
@@ -11,7 +12,12 @@ hr {
     border-color: rgba(255, 255, 255, 0.2)
 }
 
-/* General */
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nunito', Arial, Helvetica, sans-serif;
+    font-weight: 800;
+}
+
+/* General content */
 
 .box {
   background-color: #17172E;
