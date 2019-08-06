@@ -257,10 +257,6 @@ function createCard(passedCard) {
   let xBtn = $("<i class='xBtn fas fa-times'></i>");
   $(cardWrapper).prepend(xBtn);
 
-  //Remove card X
-  let xBtn = $("<i class='xBtn fas fa-times'></i>");
-  $(cardWrapper).prepend(xBtn);
-
   //content wrapper
   let cardContent = document.createElement('div');
   cardContent.setAttribute('class', 'card-content');
