@@ -43,6 +43,7 @@ hr {
     font: 16px Arial;
     box-sizing: border-box;
 }
+
 .searchbar {
     width: 650px;
     height: 54px;
@@ -429,5 +430,27 @@ input[type=submit] {
         float: none;
         width: 100%;
         flex-grow: 2;
+    }
+
+    #mainSearch {
+        width: 80%;
+    }
+
+    .autocomplete {
+        width: 340px;
+    }
+
+    .input-group {
+        display: flex;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 664px) {
+    .autocomplete {
+        width: 200px;
+    }
+    .navbar {
+        overflow: scroll;
     }
 }
