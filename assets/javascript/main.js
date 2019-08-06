@@ -217,7 +217,7 @@ function showSearchArray(inp, arr) {
     for (var i = 0; i < x.length; i++) {
       x[i].classList.remove("autocomplete-active");
     }
-  }
+  };
 
   function closeAllLists(elmnt) {
     /*close all autocomplete lists in the document,
@@ -228,7 +228,7 @@ function showSearchArray(inp, arr) {
         x[i].parentNode.removeChild(x[i]);
       }
     }
-  }
+  };
   /*execute a function when someone clicks in the document:*/
   document.addEventListener("click", function (e) {
     closeAllLists(e.target);
@@ -489,10 +489,47 @@ document.addEventListener("DOMContentLoaded", function (func) {
   });
 
 
+
   // on search button pressed
   document.querySelector("#searchButton").addEventListener("click", function (e) {
-    let cardToSearch = document.querySelector("#myInput").value;
-    hearthstoneQuery(cardToSearch);
+    if (arraySelection === cardName) {
+      let cardToSearch = document.querySelector("#myInput").value;
+      hearthstoneQuery(cardToSearch);
+    } else if
+      (arraySelection === cardType) {
+      let typeToSearch = document.querySelector("#myInput").value.toLowerCase();
+      const popOverlay = $(`<div class="popup-overlay">`);
+      const popContent = $(`<div class="popup-content">`);
+      const popClose = $(`<button class="close">Close</button>`);
+      popOverlay.append(popContent);
+      for (let i = 0; i < typeOnly[typeToSearch].length; i++) {
+        const cardDiv = $(`<button class="card-buttons">`);
+        cardDiv.val(typeOnly[typeToSearch][i])
+        cardDiv.text(typeOnly[typeToSearch][i]);
+        popContent.append(cardDiv);
+      };
+      popContent.append(popClose);
+      $("#main-container").prepend(popOverlay);
+      $(".popup, .popup-content").addClass("active");
+      $(".card-buttons").on("click", function () {
+        console.log("ButtonClick");
+        let cardToSearch = $(this).val();
+        hearthstoneQuery(cardToSearch);
+  
+
+      });
+
+
+
+
+      $(".close, .popup").on("click", function () {
+        $(".popup, .popup-content").removeClass("active");
+      });
+
+    } else {
+      console.log("card-Class");
+    }
+
   });
 
   $("#favSidebarContainer").on("click", ".unfavorite-btn", function (e) {
@@ -543,9 +580,9 @@ function updateStars() {
   console.log("Updating stars in dom");
   const stars = $(".favorite").toArray();
   console.log(stars);
-  for (let i = 0; i < stars.length; i ++ ) {
+  for (let i = 0; i < stars.length; i++) {
     console.log($(stars[i]).attr("data-state"));
-    if ($(stars[i]).attr("data-state") === "favorited" && !favsList.includes( $(stars[i]).attr("data-card-name") ) ) {
+    if ($(stars[i]).attr("data-state") === "favorited" && !favsList.includes($(stars[i]).attr("data-card-name"))) {
       console.log("Match!");
       $(stars[i]).attr("data-state", "unfavorited");
       $(stars[i]).removeClass("favorited");
