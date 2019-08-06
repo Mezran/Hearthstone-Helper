@@ -460,9 +460,24 @@ document.addEventListener("DOMContentLoaded", function (func) {
     loadTitle (twitchInfo[index]);
   }
   document.querySelector("#nextStreamer").addEventListener("click", function(){
+    if (streamIndex === 19){
+    streamIndex = 0;
+    twitchCall(streamIndex)
+    } else {
     twitchCall(++streamIndex);
-  })
-
+    }
+  });
+  
+  document.querySelector("#previousStreamer").addEventListener("click", function(){
+    if (streamIndex === 0){
+      streamIndex = streamers.length -1;
+      twitchCall(streamIndex);
+    } else {
+        twitchCall(--streamIndex);
+      }
+    });
+    
+  
   function twitchQuery() {
     // hearthstoneID is the id from twitch.tv documentation.
     const hearthstoneID = "138585";
