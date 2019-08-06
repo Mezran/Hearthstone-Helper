@@ -211,11 +211,19 @@ input[type=submit] {
 
 /* Twitch portal */
 
-#twitch-embed {
+#twitch-container {
+    position: relative;
     width: 100%;
-    padding: 12px;
-    text-align: center;
-    overflow: hidden;
+    padding: 19.66%; /*This will make the height of the box a percentage of the width.*/
+}
+
+#twitch-embed {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /* padding: 12px; */
+    top: 0;
+    left: 0;
 }
 
 /* favorites bar */
@@ -257,11 +265,11 @@ input[type=submit] {
     border-radius: 6px;
 }
 
-.myCard .card-content, .myCard .card-image {
+.card-content, .card-image {
     float: left;
 }
 
-.myCard .card-image {
+.card-image {
     width: 30%;
     height: auto;
     padding: 0 20px 20px;
@@ -269,7 +277,7 @@ input[type=submit] {
     display: inline-block;
 }
 
-.myCard .card-content {
+.card-content {
     width: 70%;
     height: auto;
     display: inline-block;
@@ -386,4 +394,40 @@ input[type=submit] {
 .quick-links:hover {
     text-decoration: none;
     border-bottom: 1px solid #08A6FF;
+}
+
+@media screen and (max-width: 843px) {
+    #twitch-container {
+        height: 800px;
+        padding: 0;
+        position: static;
+    }
+
+    #twitch-embed {
+        position: static;
+    }
+
+    .myCard {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+    }
+
+    .card-image {
+        width: 176px;
+        height: 235px;
+        float: none;
+        flex-grow: 1;
+    }
+
+    .card-content {
+        position: static;
+        top: 0;
+        transform: translateY(0);
+        float: none;
+        width: 100%;
+        flex-grow: 2;
+    }
 }
