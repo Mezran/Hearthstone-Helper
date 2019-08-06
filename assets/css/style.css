@@ -282,6 +282,16 @@ input[type=submit] {
 .favorite {
     vertical-align: middle;
     padding-right: 8px;
+    cursor: pointer;
+}
+
+.favorite[data-state="unfavorited"] {
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
+}
+
+.favorite:hover {
+    opacity: 1;
 }
 
 .favorited {
@@ -312,6 +322,21 @@ input[type=submit] {
 
 .card-stat {
     margin-right: 24px;
+}
+
+.xBtn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: #A1A1A1;
+    font-size: 1.4em;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
+}
+
+.xBtn:hover {
+    opacity: 1;
 }
 
 /* Glossary */
