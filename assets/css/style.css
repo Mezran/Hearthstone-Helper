@@ -265,6 +265,15 @@ input[type=submit] {
     text-overflow: ellipsis;
 }
 
+.favorite-item {
+    padding-bottom: 6px;
+    border-bottom: 1px solid #222238;
+}
+
+.favorite-item:last-child {
+    border-bottom: none;
+}
+
 /* Cards styling */
 
 .myCard {

@@ -252,8 +252,6 @@ function createCard(passedCard) {
   cardImage.setAttribute('src', passedCard[0].img);
   cardImage.setAttribute('onerror', "this.onerror=null;this.src='./assets/images/blank.png'")
   cardWrapper.appendChild(cardImage);
-  
-  
 
   //Remove card X
   let xBtn = $("<i class='xBtn fas fa-times'></i>");
@@ -408,7 +406,7 @@ function buildFavs() {
   $("#favSidebarContainer").empty();
   favsList = JSON.parse(localStorage.getItem("favsList")) || [];
   for (let i = 0; i < favsList.length; i++) {
-    const favDiv = $("<div class='mt-3'>");
+    const favDiv = $("<div class='favorite-item mt-2'>");
     const favText = $("<div class='favText'>");
     const unfavText = $("<p>");
 
