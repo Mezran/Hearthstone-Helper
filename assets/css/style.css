@@ -282,8 +282,17 @@ input[type=submit] {
 .favorite {
     vertical-align: middle;
     padding-right: 8px;
+    cursor: pointer;
 }
 
+.favorite[data-state="unfavorited"] {
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
+}
+
+.favorite:hover {
+    opacity: 1;
+}
 
 .favorited {
     color: #FF9B00;
@@ -322,6 +331,12 @@ input[type=submit] {
     color: #A1A1A1;
     font-size: 1.4em;
     cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 300ms ease-in-out;
+}
+
+.xBtn:hover {
+    opacity: 1;
 }
 
 /* Glossary */
