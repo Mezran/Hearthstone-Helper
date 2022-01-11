@@ -10,8 +10,6 @@ Hearthstone helper is a web application designed to help users learn the popular
 - [Hearthstone API](https://hearthstoneapi.com) - Hearthstone card database
 
 ## Views
-### Deployment link
-- https://mezran.github.io/Hearthstone-Helper/
 
 ### Landing page
 Hearthstone Helper is a simple web app with several options when the user loads the page.
